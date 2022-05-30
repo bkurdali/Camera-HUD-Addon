@@ -19,120 +19,85 @@ from bpy_extras import view3d_utils
 
 
 # Gizmo Triangle Coords
-
-# Button
-size = .3
+size = 1
 custom_shape_verts = (
     (0, 0, 0), (size, size, 0), (size, 0, 0),
     (0, size, 0), (size, size, 0), (0, 0, 0),
     )
-    
-# Slider
 
-width = size
-thick = width / 10
-height = size * 10
-base_shape_verts = (    
-    (0, 0, 0), (width, -thick, 0), (width, 0, 0),
-    (0, -thick, 0), (width, -thick, 0), (0, 0, 0),
+locked = ((size * 0.3862968683242798, size * 0.8769386410713196, size * 0.0), (size * 0.49802443385124207, size * 0.8148969411849976, size * 0.0), (size * 0.49802443385124207, size * 0.8995057940483093, size * 0.0), (size * 0.49802443385124207, size * 0.8148969411849976, size * 0.0), (size * 0.3862968683242798, size * 0.8769386410713196, size * 0.0), (size * 0.41922473907470703, size * 0.798980712890625, size * 0.0), (size * 0.3862968683242798, size * 0.8769386410713196, size * 0.0), (size * 0.295041024684906, size * 0.8154029846191406, size * 0.0), (size * 0.41922473907470703, size * 0.798980712890625, size * 0.0), (size * 0.641185462474823, size * 0.7555806040763855, size * 0.0), (size * 0.7625436782836914, size * 0.7241472005844116, size * 0.0), (size * 0.7010079026222229, size * 0.8154030442237854, size * 0.0), (size * 0.7010079026222229, size * 0.8154030442237854, size * 0.0), (size * 0.6097519993782043, size * 0.8769387006759644, size * 0.0), (size * 0.5768241286277771, size * 0.798980712890625, size * 0.0), (size * 0.5768241286277771, size * 0.798980712890625, size * 0.0), (size * 0.641185462474823, size * 0.7555806040763855, size * 0.0), (size * 0.7010079026222229, size * 0.8154030442237854, size * 0.0), (size * 0.23350536823272705, size * 0.7241472005844116, size * 0.0), (size * 0.3548634350299835, size * 0.7555806040763855, size * 0.0), (size * 0.295041024684906, size * 0.8154029846191406, size * 0.0), (size * 0.6097519993782043, size * 0.8769387006759644, size * 0.0), (size * 0.49802443385124207, size * 0.8148969411849976, size * 0.0), (size * 0.5768241286277771, size * 0.798980712890625, size * 0.0), (size * 0.23350536823272705, size * 0.7241472005844116, size * 0.0), (size * 0.31146329641342163, size * 0.6912193298339844, size * 0.0), (size * 0.3548634350299835, size * 0.7555806040763855, size * 0.0), (size * 0.6845856308937073, size * 0.6912193298339844, size * 0.0), (size * 0.7625436782836914, size * 0.7241472005844116, size * 0.0), (size * 0.641185462474823, size * 0.7555806040763855, size * 0.0), (size * 0.21093827486038208, size * 0.6124196648597717, size * 0.0), (size * 0.31146329641342163, size * 0.6912193298339844, size * 0.0), (size * 0.23350536823272705, size * 0.7241472005844116, size * 0.0), (size * 0.6845856308937073, size * 0.6912193298339844, size * 0.0), (size * 0.7851107120513916, size * 0.6124196648597717, size * 0.0), (size * 0.7625436782836914, size * 0.7241472005844116, size * 0.0), (size * 0.21093827486038208, size * 0.6124196648597717, size * 0.0), (size * 0.2955470681190491, size * 0.6124196648597717, size * 0.0), (size * 0.31146329641342163, size * 0.6912193298339844, size * 0.0), (size * 0.7005018591880798, size * 0.6124196648597717, size * 0.0), (size * 0.7851107120513916, size * 0.6124196648597717, size * 0.0), (size * 0.6845856308937073, size * 0.6912193298339844, size * 0.0), (size * 0.1658715307712555, size * 0.04843902587890625, size * 0.0), (size * 0.21093827486038208, size * 0.6124196648597717, size * 0.0), (size * 0.1658715307712555, size * 0.6124196648597717, size * 0.0), (size * 0.1658715307712555, size * 0.04843902587890625, size * 0.0), (size * 0.2955470681190491, size * 0.6124196648597717, size * 0.0), (size * 0.21093827486038208, size * 0.6124196648597717, size * 0.0), (size * 0.1658715307712555, size * 0.04843902587890625, size * 0.0), (size * 0.7005018591880798, size * 0.6124196648597717, size * 0.0), (size * 0.2955470681190491, size * 0.6124196648597717, size * 0.0), (size * 0.1658715307712555, size * 0.04843902587890625, size * 0.0), (size * 0.830177366733551, size * 0.04843902587890625, size * 0.0), (size * 0.7005018591880798, size * 0.6124196648597717, size * 0.0), (size * 0.830177366733551, size * 0.04843902587890625, size * 0.0), (size * 0.830177366733551, size * 0.6124196648597717, size * 0.0), (size * 0.7851107120513916, size * 0.6124196648597717, size * 0.0), (size * 0.3548634350299835, size * 0.7555806040763855, size * 0.0), (size * 0.41922473907470703, size * 0.798980712890625, size * 0.0), (size * 0.295041024684906, size * 0.8154029846191406, size * 0.0), (size * 0.49802443385124207, size * 0.8148969411849976, size * 0.0), (size * 0.6097519993782043, size * 0.8769387006759644, size * 0.0), (size * 0.49802443385124207, size * 0.8995057940483093, size * 0.0), (size * 0.830177366733551, size * 0.04843902587890625, size * 0.0), (size * 0.7851107120513916, size * 0.6124196648597717, size * 0.0), (size * 0.7005018591880798, size * 0.6124196648597717, size * 0.0))
 
-    (0, -height, 0), (width, -thick - height, 0), (width, -height, 0),
-    (0, -thick - height, 0), (width, -thick - height, 0), (0, -height, 0),
-    )
-slider_shape_verts = (
-    (0, -size/4, 0), (size, size/4, 0), (size, -size/4, 0),
-    (0, size/4, 0), (size, size/4, 0), (0, -size/4, 0),
-    )
-
+unlocked = ((size * 0.3347567915916443, size * 0.7555806040763855, size * 0.0), (size * 0.44880616664886475, size * 0.7241472005844116, size * 0.0), (size * 0.3987385034561157, size * 0.8154029846191406, size * 0.0), (size * 0.17789548635482788, size * 0.798980712890625, size * 0.0), (size * 0.23358383774757385, size * 0.8148969411849976, size * 0.0), (size * 0.14267821609973907, size * 0.8769387006759644, size * 0.0), (size * 0.23358383774757385, size * 0.8148969411849976, size * 0.0), (size * 0.32448944449424744, size * 0.8769386410713196, size * 0.0), (size * 0.23358383774757385, size * 0.8995057940483093, size * 0.0), (size * 0.3987385034561157, size * 0.8154029846191406, size * 0.0), (size * 0.32448944449424744, size * 0.8769386410713196, size * 0.0), (size * 0.2892721891403198, size * 0.798980712890625, size * 0.0), (size * 0.2892721891403198, size * 0.798980712890625, size * 0.0), (size * 0.3347567915916443, size * 0.7555806040763855, size * 0.0), (size * 0.3987385034561157, size * 0.8154029846191406, size * 0.0), (size * 0.13241085410118103, size * 0.7555806040763855, size * 0.0), (size * 0.17789548635482788, size * 0.798980712890625, size * 0.0), (size * 0.0684291273355484, size * 0.8154030442237854, size * 0.0), (size * 0.0684291273355484, size * 0.8154030442237854, size * 0.0), (size * 0.17789548635482788, size * 0.798980712890625, size * 0.0), (size * 0.14267821609973907, size * 0.8769387006759644, size * 0.0), (size * 0.018361438065767288, size * 0.7241472005844116, size * 0.0), (size * 0.10173964500427246, size * 0.6912193298339844, size * 0.0), (size * 0.13241085410118103, size * 0.7555806040763855, size * 0.0), (size * 0.36542800068855286, size * 0.6912193298339844, size * 0.0), (size * 0.44880616664886475, size * 0.7241472005844116, size * 0.0), (size * 0.3347567915916443, size * 0.7555806040763855, size * 0.0), (size * 0.0, size * 0.6124196648597717, size * 0.0), (size * 0.10173964500427246, size * 0.6912193298339844, size * 0.0), (size * 0.018361438065767288, size * 0.7241472005844116, size * 0.0), (size * 0.36542800068855286, size * 0.6912193298339844, size * 0.0), (size * 0.46716758608818054, size * 0.6124196648597717, size * 0.0), (size * 0.44880616664886475, size * 0.7241472005844116, size * 0.0), (size * 0.0, size * 0.6124196648597717, size * 0.0), (size * 0.09049153327941895, size * 0.6124196648597717, size * 0.0), (size * 0.10173964500427246, size * 0.6912193298339844, size * 0.0), (size * 0.376676082611084, size * 0.6124196648597717, size * 0.0), (size * 0.46716758608818054, size * 0.6124196648597717, size * 0.0), (size * 0.36542800068855286, size * 0.6912193298339844, size * 0.0), (size * 0.4274178743362427, size * 0.5257151126861572, size * 0.0), (size * 0.376676082611084, size * 0.6124196648597717, size * 0.0), (size * 0.33569416403770447, size * 0.6124196648597717, size * 0.0), (size * 0.4274178743362427, size * 0.5257151126861572, size * 0.0), (size * 0.46716758608818054, size * 0.6124196648597717, size * 0.0), (size * 0.376676082611084, size * 0.6124196648597717, size * 0.0), (size * 0.4274178743362427, size * 0.5257151126861572, size * 0.0), (size * 1.0, size * 0.6124196648597717, size * 0.0), (size * 0.46716758608818054, size * 0.6124196648597717, size * 0.0), (size * 0.4274178743362427, size * 0.5257151126861572, size * 0.0), (size * 0.9082762598991394, size * 0.5257151126861572, size * 0.0), (size * 1.0, size * 0.6124196648597717, size * 0.0), (size * 0.9082762598991394, size * 0.5257151126861572, size * 0.0), (size * 1.0, size * 0.04843902587890625, size * 0.0), (size * 1.0, size * 0.6124196648597717, size * 0.0), (size * 0.33569416403770447, size * 0.04843902587890625, size * 0.0), (size * 0.4274178743362427, size * 0.13514354825019836, size * 0.0), (size * 0.4274178743362427, size * 0.5257151126861572, size * 0.0), (size * 0.9082762598991394, size * 0.13514354825019836, size * 0.0), (size * 1.0, size * 0.04843902587890625, size * 0.0), (size * 0.9082762598991394, size * 0.5257151126861572, size * 0.0), (size * 0.33569416403770447, size * 0.04843902587890625, size * 0.0), (size * 0.9082762598991394, size * 0.13514354825019836, size * 0.0), (size * 0.4274178743362427, size * 0.13514354825019836, size * 0.0), (size * 0.33569416403770447, size * 0.04843902587890625, size * 0.0), (size * 1.0, size * 0.04843902587890625, size * 0.0), (size * 0.9082762598991394, size * 0.13514354825019836, size * 0.0), (size * 0.32448944449424744, size * 0.8769386410713196, size * 0.0), (size * 0.23358383774757385, size * 0.8148969411849976, size * 0.0), (size * 0.2892721891403198, size * 0.798980712890625, size * 0.0), (size * 0.018361438065767288, size * 0.7241472005844116, size * 0.0), (size * 0.13241085410118103, size * 0.7555806040763855, size * 0.0), (size * 0.0684291273355484, size * 0.8154030442237854, size * 0.0), (size * 0.14267821609973907, size * 0.8769387006759644, size * 0.0), (size * 0.23358383774757385, size * 0.8148969411849976, size * 0.0), (size * 0.23358383774757385, size * 0.8995057940483093, size * 0.0), (size * 0.33569416403770447, size * 0.04843902587890625, size * 0.0), (size * 0.4274178743362427, size * 0.5257151126861572, size * 0.0), (size * 0.33569416403770447, size * 0.6124196648597717, size * 0.0))
 
 class ButtonWidget(bpy.types.Gizmo):
     """ Custom 'button' gizmo for camera """
     bl_idname = "VIEW3D_GT_button_widget"
+    
+    locked: bpy.props.BoolProperty(default=True)
 
     def draw(self, context):
-        self.draw_custom_shape(self.custom_shape)
+        self.draw_custom_shape(self.locked_shape if self.locked else self.unlocked_shape)
 
     def draw_select(self, context, select_id):
-        self.draw_custom_shape(self.custom_shape, select_id=select_id)
+        self.draw_custom_shape(self.locked_shape if self.locked else self.unlocked_shape, select_id=select_id)
 
     def setup(self):
-        if not hasattr(self, "custom_shape"):
-            self.custom_shape = self.new_custom_shape(
-                'TRIS', custom_shape_verts)
-                
-                
-class MyCustomShapeWidget(Gizmo):
-    bl_idname = "VIEW3D_GT_custom_shape_widget"
-    bl_target_properties = (
-        {"id": "offset", "type": 'FLOAT', "array_length": 1},
-    )
-
-    __slots__ = (
-        "custom_shape",
-        "init_mouse_y",
-        "init_value",
-    )
-
-    def _update_offset_matrix(self):
-        # offset behind the light
-        self.matrix_offset.col[3][2] = self.target_get_value("offset") / -10.0
-
-    def draw(self, context):
-        self._update_offset_matrix()
-        self.draw_custom_shape(self.custom_shape)
-
-    def draw_select(self, context, select_id):
-        self._update_offset_matrix()
-        self.draw_custom_shape(self.custom_shape, select_id=select_id)
-
-    def setup(self):
-        if not hasattr(self, "base_shape"):
-            self.base_shape = self.new_custom_shape('TRIS', base_shape_verts)
-        if not hasattr(self, "slider_shape"):
-            self.base_shape = self.new_custom_shape('TRIS', slider_shape_verts)
-
-
-    def invoke(self, context, event):
-        self.init_mouse_y = event.mouse_y
-        self.init_value = self.target_get_value("offset")
-        return {'RUNNING_MODAL'}
-
-    def exit(self, context, cancel):
-        context.area.header_text_set(None)
-        if cancel:
-            self.target_set_value("offset", self.init_value)
-
-    def modal(self, context, event, tweak):
-        delta = (event.mouse_y - self.init_mouse_y) / 10.0
-        if 'SNAP' in tweak:
-            delta = round(delta)
-        if 'PRECISE' in tweak:
-            delta /= 10.0
-        value = self.init_value - delta
-        self.target_set_value("offset", value)
-        context.area.header_text_set("My Gizmo: %.4f" % value)
-        return {'RUNNING_MODAL'}
-
+        if not hasattr(self, "unlocked_shape"):
+            self.unlocked_shape = self.new_custom_shape('TRIS', [(co[0] - size, co[1], co[2]) for co in unlocked])
+        if not hasattr(self, "locked_shape"):
+            self.locked_shape = self.new_custom_shape('TRIS', [(co[0] - size, co[1], co[2]) for co in locked])
 
 
 def gizmo_matrix(context):
     """ Get the gizmo matrix so it sits next to the camera frame """
     space = context.space_data
+    scene = context.scene
     ob = space.camera
     cam = ob.data
+    
     z = 1 # probs doesn't matter, can set to clipsta +.1 or so
+    
+    gizmo_size = context.preferences.view.gizmo_size
+
+    
+    res_x, res_y = (scene.render.resolution_x, scene.render.resolution_y)
+    landscape = res_x > res_y
+    angle = cam.angle_x / 2 if landscape else cam.angle_y / 2
+    base = math.tan(angle) * z
+    x = base if landscape else base * res_x / res_y
+    y = base * res_y / res_x if landscape else base
+    largest = max(x, y)
+
     loc = mathutils.Vector((
-        math.tan(cam.angle_x/2) * z,
-        -math.tan(cam.angle_x/2) * 1080 * z / 1920,
-        -z))
+        x + largest * 2 * cam.shift_x ,
+        -y + largest * 2 * cam.shift_y,
+        z
+        ))
+
+    projected_gizmo_size = bpy_extras.view3d_utils.region_2d_to_location_3d(
+        context.region,
+        space.region_3d,
+        mathutils.Vector((gizmo_size, gizmo_size)),
+        loc
+        )[0]
+
+    loc = mathutils.Vector((
+        x + largest * 2 * cam.shift_x ,
+        -y + largest * 2 * cam.shift_y,
+        -z
+        ))
+        
+
     loc_cam = mathutils.Matrix.Translation(loc) @ ob.matrix_world 
     loc_cam = ob.matrix_world @ mathutils.Matrix.Translation(loc)
+    
     return loc_cam.normalized()
 
 
 def gizmo_color(context):
     """ Color the gizmo based on lock_camera """
     space = context.space_data
+    return context.preferences.themes['Default'].user_interface.gizmo_primary
     return (1.0, 0.5, 0.0) if space.lock_camera else (0.0, 0.0, 0.0)
 
 
@@ -174,7 +139,7 @@ class ViewLockGroup(bpy.types.GizmoGroup):
 
         gz.color_highlight = gz.color
         gz.alpha_highlight = 1.0
-
+        gz.locked = context.space_data.lock_camera
         self.view_lock_gizmo = gz
 
     def refresh(self, context):
@@ -182,11 +147,16 @@ class ViewLockGroup(bpy.types.GizmoGroup):
         gz = self.view_lock_gizmo
         gz.color = gizmo_color(context)
         gz.color_highlight = gz.color
+        gz.locked = context.space_data.lock_camera
         gz.matrix_basis =  gizmo_matrix(context)
         
     def draw_prepare(self, context):
         gz = self.view_lock_gizmo
+        gz.locked = context.space_data.lock_camera
         gz.matrix_basis = gizmo_matrix(context)
+        
+
+        
 
 
 def register():
