@@ -48,10 +48,10 @@ class ButtonWidget(bpy.types.Gizmo):
         # TODO remove the size offset once matrix is figured out
         if not hasattr(self, "unlocked_shape"):
             self.unlocked_shape = self.new_custom_shape(
-                'TRIS', [(co[0] - size, co[1], co[2]) for co in unlocked])
+                'TRIS', unlocked)
         if not hasattr(self, "locked_shape"):
             self.locked_shape = self.new_custom_shape(
-                'TRIS', [(co[0] - size, co[1], co[2]) for co in locked])
+                'TRIS', locked)
 
 
 def gizmo_matrix(context):
@@ -75,31 +75,37 @@ def gizmo_matrix(context):
     largest = max(x, y)
 
     print()
-    loc = mathutils.Vector((
+    
+    bottom_right = loc = mathutils.Vector((
         x + largest * 2 * cam.shift_x ,
         -y + largest * 2 * cam.shift_y,
         -z
         ))
-    print(loc)
+    bottom_left = bottom_right
+ 
+    loc_cam = ob.matrix_world @ mathutils.Matrix.Translation(loc)
+    
+    loc_vec= loc_cam.to_translation()
+
+
+
 
     loc2d = bpy_extras.view3d_utils.location_3d_to_region_2d(
         context.region,
         context.space_data.region_3d,
-        loc)
-
-    origin2d = loc2d - mathutils.Vector((gizmo_size * size, 0))
-
-    loc = bpy_extras.view3d_utils.region_2d_to_location_3d(
+        loc_vec)
+    
+    origin2d = loc2d - mathutils.Vector((2.5 * gizmo_size * size, 0))
+    loc_shift = bpy_extras.view3d_utils.region_2d_to_location_3d(
         context.region,
         context.space_data.region_3d,
         origin2d,
-        loc
+        loc_vec
         )
 
-    print(loc)
-    loc_cam = mathutils.Matrix.Translation(loc) @ ob.matrix_world 
-    loc_cam = ob.matrix_world @ mathutils.Matrix.Translation(loc)
-    
+    loc_out = ob.matrix_world.inverted() @ mathutils.Matrix.Translation(loc_shift)
+    loc_cam = ob.matrix_world @ mathutils.Matrix.Translation(loc_out.to_translation())
+ 
     return loc_cam.normalized()
 
 
