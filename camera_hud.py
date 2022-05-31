@@ -20,6 +20,7 @@ from bpy_extras import view3d_utils
 
 # Gizmo Triangle Coords
 size = 0.3
+display_scale =  1
 custom_shape_verts = (
     (0, 0, 0), (size, size, 0), (size, 0, 0),
     (0, size, 0), (size, size, 0), (0, 0, 0),
@@ -60,6 +61,8 @@ def gizmo_matrix(context):
     scene = context.scene
     ob = space.camera
     cam = ob.data
+    area = context.area
+    ui = area.regions[3]
     
     z = cam.clip_start + .01
     
@@ -74,35 +77,42 @@ def gizmo_matrix(context):
     y = base * res_y / res_x if landscape else base
     largest = max(x, y)
 
-    print()
-    
-    bottom_right = loc = mathutils.Vector((
+    print(context.area.width)
+    print(context.area.x)
+    # first we're getting camera space coords of the bottom right corner
+    loc = mathutils.Vector((
         x + largest * 2 * cam.shift_x ,
         -y + largest * 2 * cam.shift_y,
         -z
         ))
-    bottom_left = bottom_right
- 
+    # in world space:
     loc_cam = ob.matrix_world @ mathutils.Matrix.Translation(loc)
-    
+    # just the translation part
     loc_vec= loc_cam.to_translation()
 
 
 
-
+    # now we get that in screen pixels
     loc2d = bpy_extras.view3d_utils.location_3d_to_region_2d(
         context.region,
         context.space_data.region_3d,
         loc_vec)
-    
-    origin2d = loc2d - mathutils.Vector((2.5 * gizmo_size * size, 0))
+
+    maxwidth = context.area.width - ui.width
+    loc2d[1] = max(loc2d[1], 0)
+    loc2d[0] = min(loc2d[0], maxwidth)
+
+
+    # and subtract gizmo width
+    origin2d = loc2d - mathutils.Vector((display_scale * gizmo_size * size, 0))
+    # lets calculate the 3D vector again
     loc_shift = bpy_extras.view3d_utils.region_2d_to_location_3d(
         context.region,
         context.space_data.region_3d,
         origin2d,
         loc_vec
         )
-
+    # shift it in and out of camera space to get the orientation right
     loc_out = ob.matrix_world.inverted() @ mathutils.Matrix.Translation(loc_shift)
     loc_cam = ob.matrix_world @ mathutils.Matrix.Translation(loc_out.to_translation())
  
