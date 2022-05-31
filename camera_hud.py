@@ -19,7 +19,7 @@ from bpy_extras import view3d_utils
 
 
 # Gizmo Triangle Coords
-size = 1
+size = 0.3
 custom_shape_verts = (
     (0, 0, 0), (size, size, 0), (size, 0, 0),
     (0, size, 0), (size, size, 0), (0, 0, 0),
@@ -35,17 +35,23 @@ class ButtonWidget(bpy.types.Gizmo):
     
     locked: bpy.props.BoolProperty(default=True)
 
+    def shape(self):
+        return self.locked_shape if self.locked else self.unlocked_shape
+
     def draw(self, context):
-        self.draw_custom_shape(self.locked_shape if self.locked else self.unlocked_shape)
+        self.draw_custom_shape(self.shape())
 
     def draw_select(self, context, select_id):
-        self.draw_custom_shape(self.locked_shape if self.locked else self.unlocked_shape, select_id=select_id)
+        self.draw_custom_shape(self.shape(), select_id=select_id)
 
     def setup(self):
+        # TODO remove the size offset once matrix is figured out
         if not hasattr(self, "unlocked_shape"):
-            self.unlocked_shape = self.new_custom_shape('TRIS', [(co[0] - size, co[1], co[2]) for co in unlocked])
+            self.unlocked_shape = self.new_custom_shape(
+                'TRIS', [(co[0] - size, co[1], co[2]) for co in unlocked])
         if not hasattr(self, "locked_shape"):
-            self.locked_shape = self.new_custom_shape('TRIS', [(co[0] - size, co[1], co[2]) for co in locked])
+            self.locked_shape = self.new_custom_shape(
+                'TRIS', [(co[0] - size, co[1], co[2]) for co in locked])
 
 
 def gizmo_matrix(context):
@@ -55,7 +61,7 @@ def gizmo_matrix(context):
     ob = space.camera
     cam = ob.data
     
-    z = 1 # probs doesn't matter, can set to clipsta +.1 or so
+    z = cam.clip_start + .01
     
     gizmo_size = context.preferences.view.gizmo_size
 
@@ -68,26 +74,29 @@ def gizmo_matrix(context):
     y = base * res_y / res_x if landscape else base
     largest = max(x, y)
 
-    loc = mathutils.Vector((
-        x + largest * 2 * cam.shift_x ,
-        -y + largest * 2 * cam.shift_y,
-        z
-        ))
-
-    projected_gizmo_size = bpy_extras.view3d_utils.region_2d_to_location_3d(
-        context.region,
-        space.region_3d,
-        mathutils.Vector((gizmo_size, gizmo_size)),
-        loc
-        )[0]
-
+    print()
     loc = mathutils.Vector((
         x + largest * 2 * cam.shift_x ,
         -y + largest * 2 * cam.shift_y,
         -z
         ))
-        
+    print(loc)
 
+    loc2d = bpy_extras.view3d_utils.location_3d_to_region_2d(
+        context.region,
+        context.space_data.region_3d,
+        loc)
+
+    origin2d = loc2d - mathutils.Vector((gizmo_size * size, 0))
+
+    loc = bpy_extras.view3d_utils.region_2d_to_location_3d(
+        context.region,
+        context.space_data.region_3d,
+        origin2d,
+        loc
+        )
+
+    print(loc)
     loc_cam = mathutils.Matrix.Translation(loc) @ ob.matrix_world 
     loc_cam = ob.matrix_world @ mathutils.Matrix.Translation(loc)
     
