@@ -20,8 +20,6 @@ from mathutils import Vector, Matrix
 
 
 # Gizmo Triangle Coords
-size = 0.3
-display_scale =  2.5
 
 def locked(size):
     return ((size * 0.45052126, size * 0.87532949, -size * 0.00000273),(size * 0.55065256, size * 0.81972712, -size * 0.00000273),(size * 0.55065256, size * 0.89555436, -size * 0.00000273),(size * 0.55065256, size * 0.81972712, -size * 0.00000273),(size * 0.45052126, size * 0.87532949, -size * 0.00000273),(size * 0.48003152, size * 0.80546290, -size * 0.00000273),(size * 0.45052126, size * 0.87532949, -size * 0.00000273),(size * 0.36873698, size * 0.82018065, -size * 0.00000273),(size * 0.48003152, size * 0.80546290, -size * 0.00000273),(size * 0.67895466, size * 0.76656729, -size * 0.00000273),(size * 0.78771693, size * 0.73839647, -size * 0.00000273),(size * 0.73256809, size * 0.82018071, -size * 0.00000273),(size * 0.73256809, size * 0.82018071, -size * 0.00000273),(size * 0.65078378, size * 0.87532949, -size * 0.00000273),(size * 0.62127352, size * 0.80546290, -size * 0.00000273),(size * 0.62127352, size * 0.80546290, -size * 0.00000273),(size * 0.67895466, size * 0.76656729, -size * 0.00000273),(size * 0.73256809, size * 0.82018071, -size * 0.00000273),(size * 0.31358820, size * 0.73839647, -size * 0.00000273),(size * 0.42235038, size * 0.76656729, -size * 0.00000273),(size * 0.36873698, size * 0.82018065, -size * 0.00000273),(size * 0.65078378, size * 0.87532949, -size * 0.00000273),(size * 0.55065256, size * 0.81972712, -size * 0.00000273),(size * 0.62127352, size * 0.80546290, -size * 0.00000273),(size * 0.31358820, size * 0.73839647, -size * 0.00000273),(size * 0.38345477, size * 0.70888621, -size * 0.00000273),(size * 0.42235038, size * 0.76656729, -size * 0.00000273),(size * 0.71785027, size * 0.70888621, -size * 0.00000273),(size * 0.78771693, size * 0.73839647, -size * 0.00000273),(size * 0.67895466, size * 0.76656729, -size * 0.00000273),(size * 0.29336339, size * 0.63826531, -size * 0.00000273),(size * 0.38345477, size * 0.70888621, -size * 0.00000273),(size * 0.31358820, size * 0.73839647, -size * 0.00000273),(size * 0.71785027, size * 0.70888621, -size * 0.00000273),(size * 0.80794168, size * 0.63826531, -size * 0.00000273),(size * 0.78771693, size * 0.73839647, -size * 0.00000273),(size * 0.29336339, size * 0.63826531, -size * 0.00000273),(size * 0.36919051, size * 0.63826531, -size * 0.00000273),(size * 0.38345477, size * 0.70888621, -size * 0.00000273),(size * 0.73211455, size * 0.63826531, -size * 0.00000273),(size * 0.80794168, size * 0.63826531, -size * 0.00000273),(size * 0.71785027, size * 0.70888621, -size * 0.00000273),(size * 0.25297418, size * 0.13282087, -size * 0.00000273),(size * 0.29336339, size * 0.63826531, -size * 0.00000273),(size * 0.25297418, size * 0.63826531, -size * 0.00000273),(size * 0.25297418, size * 0.13282087, -size * 0.00000273),(size * 0.36919051, size * 0.63826531, -size * 0.00000273),(size * 0.29336339, size * 0.63826531, -size * 0.00000273),(size * 0.25297418, size * 0.13282087, -size * 0.00000273),(size * 0.73211455, size * 0.63826531, -size * 0.00000273),(size * 0.36919051, size * 0.63826531, -size * 0.00000273),(size * 0.25297418, size * 0.13282087, -size * 0.00000273),(size * 0.84833086, size * 0.13282087, -size * 0.00000273),(size * 0.73211455, size * 0.63826531, -size * 0.00000273),(size * 0.84833086, size * 0.13282087, -size * 0.00000273),(size * 0.84833086, size * 0.63826531, -size * 0.00000273),(size * 0.80794168, size * 0.63826531, -size * 0.00000273),(size * 0.42235038, size * 0.76656729, -size * 0.00000273),(size * 0.48003152, size * 0.80546290, -size * 0.00000273),(size * 0.36873698, size * 0.82018065, -size * 0.00000273),(size * 0.55065256, size * 0.81972712, -size * 0.00000273),(size * 0.65078378, size * 0.87532949, -size * 0.00000273),(size * 0.55065256, size * 0.89555436, -size * 0.00000273),(size * 0.84833086, size * 0.13282087, -size * 0.00000273),(size * 0.80794168, size * 0.63826531, -size * 0.00000273),(size * 0.73211455, size * 0.63826531, -size * 0.00000273))
@@ -31,11 +29,16 @@ def home(size):
     return ((size * 0.13588154, size * 0.26217312, size * 0.00000000),(size * 0.39078629, size * 0.27160430, size * 0.00000000),(size * 0.26804948, size * 0.39434111, size * 0.00000000),(size * 0.09999990, size * 0.10000005, size * 0.00000000),(size * 0.13588154, size * 0.26217312, size * 0.00000000),(size * 0.09999996, size * 0.30000001, size * 0.00000000),(size * 0.13588154, size * 0.26217312, size * 0.00000000),(size * 0.25861835, size * 0.13943630, size * 0.00000000),(size * 0.39078629, size * 0.27160430, size * 0.00000000),(size * 0.09999990, size * 0.10000005, size * 0.00000000),(size * 0.25861835, size * 0.13943630, size * 0.00000000),(size * 0.13588154, size * 0.26217312, size * 0.00000000),(size * 0.09999990, size * 0.10000005, size * 0.00000000),(size * 0.30000001, size * 0.10000002, size * 0.00000000),(size * 0.25861835, size * 0.13943630, size * 0.00000000),(size * 0.10000000, size * 0.69999999, size * 0.00000000),(size * 0.13943632, size * 0.74138165, size * 0.00000000),(size * 0.10000000, size * 0.90000004, size * 0.00000000),(size * 0.13943632, size * 0.74138165, size * 0.00000000),(size * 0.26217312, size * 0.86411846, size * 0.00000000),(size * 0.10000000, size * 0.90000004, size * 0.00000000),(size * 0.26217312, size * 0.86411846, size * 0.00000000),(size * 0.30000001, size * 0.90000004, size * 0.00000000),(size * 0.10000000, size * 0.90000004, size * 0.00000000),(size * 0.13943632, size * 0.74138165, size * 0.00000000),(size * 0.39434111, size * 0.73195052, size * 0.00000000),(size * 0.26217312, size * 0.86411846, size * 0.00000000),(size * 0.27160430, size * 0.60921371, size * 0.00000000),(size * 0.39434111, size * 0.73195052, size * 0.00000000),(size * 0.13943632, size * 0.74138165, size * 0.00000000),(size * 0.60565889, size * 0.26804948, size * 0.00000000),(size * 0.86056370, size * 0.25861835, size * 0.00000000),(size * 0.72839570, size * 0.39078629, size * 0.00000000),(size * 0.86056370, size * 0.25861835, size * 0.00000000),(size * 0.89999998, size * 0.09999990, size * 0.00000000),(size * 0.89999998, size * 0.30000001, size * 0.00000000),(size * 0.73782688, size * 0.13588154, size * 0.00000000),(size * 0.86056370, size * 0.25861835, size * 0.00000000),(size * 0.60565889, size * 0.26804948, size * 0.00000000),(size * 0.73782688, size * 0.13588154, size * 0.00000000),(size * 0.89999998, size * 0.09999990, size * 0.00000000),(size * 0.86056370, size * 0.25861835, size * 0.00000000),(size * 0.69999999, size * 0.09999996, size * 0.00000000),(size * 0.89999998, size * 0.09999990, size * 0.00000000),(size * 0.73782688, size * 0.13588154, size * 0.00000000),(size * 0.74138165, size * 0.86056370, size * 0.00000000),(size * 0.90000010, size * 0.89999998, size * 0.00000000),(size * 0.69999999, size * 0.89999998, size * 0.00000000),(size * 0.74138165, size * 0.86056370, size * 0.00000000),(size * 0.86411846, size * 0.73782688, size * 0.00000000),(size * 0.90000010, size * 0.89999998, size * 0.00000000),(size * 0.86411846, size * 0.73782688, size * 0.00000000),(size * 0.90000004, size * 0.69999999, size * 0.00000000),(size * 0.90000010, size * 0.89999998, size * 0.00000000),(size * 0.60921371, size * 0.72839570, size * 0.00000000),(size * 0.86411846, size * 0.73782688, size * 0.00000000),(size * 0.74138165, size * 0.86056370, size * 0.00000000),(size * 0.60921371, size * 0.72839570, size * 0.00000000),(size * 0.73195052, size * 0.60565889, size * 0.00000000),(size * 0.86411846, size * 0.73782688, size * 0.00000000))
 
 
+def size_update(self, context):
+    gizmo_unregister()
+    gizmo_register()
+
+
 class HudPreferences(bpy.types.AddonPreferences):
     bl_idname = __name__
 
     size: bpy.props.FloatProperty(
-        name="Size", default=0.3, min=0.1, max=2.0)
+        name="Size", default=0.3, min=0.1, max=2.0, update=size_update)
     display_scale: bpy.props.FloatProperty(
         name="Spacing", default=1.0, min=1.0, max=3.0)
 
@@ -253,8 +256,7 @@ class FrameCameraGroup(bpy.types.GizmoGroup):
         gz.matrix_basis = gizmo_matrix(context, offset_y=1)
 
 
-def register():
-    bpy.utils.register_class(HudPreferences)
+def gizmo_register():
     bpy.utils.register_class(ViewLockWidget)
     bpy.utils.register_class(HomeWidget)
     bpy.utils.register_class(ToggleView)
@@ -262,12 +264,21 @@ def register():
     bpy.utils.register_class(FrameCameraGroup)
 
 
-def unregister():
+def gizmo_unregister():
+    bpy.utils.unregister_class(ViewLockGroup)
+    bpy.utils.unregister_class(FrameCameraGroup)
     bpy.utils.unregister_class(ViewLockWidget)
     bpy.utils.unregister_class(HomeWidget)
     bpy.utils.unregister_class(ToggleView)
-    bpy.utils.unregister_class(ViewLockGroup)
-    bpy.utils.unregister_class(FrameCameraGroup)
+
+
+def register():
+    bpy.utils.register_class(HudPreferences)
+    gizmo_register()
+
+
+def unregister():
+    gizmo_unregister()
     bpy.utils.unregister_class(HudPreferences)
     
 if __name__ == "__main__":
