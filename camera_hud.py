@@ -16,6 +16,7 @@ import mathutils
 import math
 
 from bpy_extras import view3d_utils
+from mathutils import Vector, Matrix
 
 
 # Gizmo Triangle Coords
@@ -83,22 +84,24 @@ class HomeWidget(bpy.types.Gizmo):
                 'TRIS', home(size))
 
 
-def gizmo_matrix(context, offset_x=0, offset_y=0, left=False, top=False):
+def gizmo_matrix(context, offset_x=0, offset_y=0, anchor="bottom_left"):
     """ Get the gizmo matrix so it sits next to the camera frame """
     space = context.space_data
+    area = context.area
+    ui = area.regions[3]
+
     scene = context.scene
     ob = space.camera
     cam = ob.data
-    area = context.area
-    ui = area.regions[3]
-    
-    z = cam.clip_start + .01
-    
-    gizmo_size = context.preferences.view.gizmo_size
-    size = context.preferences.addons[__name__].preferences.size
-    display_scale = context.preferences.addons[__name__].preferences.display_scale
 
-    
+    preferences = context.preferences
+
+    z = cam.clip_start + .01
+
+    gizmo_size = preferences.view.gizmo_size
+    size = preferences.addons[__name__].preferences.size
+    display_scale = preferences.addons[__name__].preferences.display_scale
+
     res_x, res_y = (scene.render.resolution_x, scene.render.resolution_y)
     landscape = res_x > res_y
     angle = cam.angle_x / 2 if landscape else cam.angle_y / 2
@@ -107,16 +110,14 @@ def gizmo_matrix(context, offset_x=0, offset_y=0, left=False, top=False):
     y = base * res_y / res_x if landscape else base
     largest = max(x, y)
 
-    print(context.area.width)
-    print(context.area.x)
-    # first we're getting camera space coords of the bottom right corner
-    loc = mathutils.Vector((
+    # first we're getting camera space coords of the anchor
+    loc = Vector((
         x + largest * 2 * cam.shift_x ,
         -y + largest * 2 * cam.shift_y,
         -z
         ))
     # in world space:
-    loc_cam = ob.matrix_world @ mathutils.Matrix.Translation(loc)
+    loc_cam = ob.matrix_world @ Matrix.Translation(loc)
     # just the translation part
     loc_vec= loc_cam.to_translation()
 
@@ -132,10 +133,10 @@ def gizmo_matrix(context, offset_x=0, offset_y=0, left=False, top=False):
 
     loc2d[1] = max(loc2d[1], 0)
     loc2d[0] = min(loc2d[0], maxwidth)
-    loc2d = loc2d + display_scale * gizmo_size * size * mathutils.Vector((offset_x, offset_y))
+    loc2d = loc2d + display_scale * gizmo_size * size * Vector((offset_x, offset_y))
 
     # and subtract gizmo width
-    origin2d = loc2d - mathutils.Vector((display_scale * gizmo_size * size, 0))
+    origin2d = loc2d - Vector((display_scale * gizmo_size * size, 0))
     # lets calculate the 3D vector again
     loc_shift = bpy_extras.view3d_utils.region_2d_to_location_3d(
         context.region,
@@ -144,9 +145,9 @@ def gizmo_matrix(context, offset_x=0, offset_y=0, left=False, top=False):
         loc_vec
         )
     # shift it in and out of camera space to get the orientation right
-    loc_out = ob.matrix_world.inverted() @ mathutils.Matrix.Translation(loc_shift)
-    loc_cam = ob.matrix_world @ mathutils.Matrix.Translation(loc_out.to_translation())
- 
+    loc_out = ob.matrix_world.inverted() @ Matrix.Translation(loc_shift)
+    loc_cam = ob.matrix_world @ Matrix.Translation(loc_out.to_translation())
+
     return loc_cam.normalized()
 
 
