@@ -34,8 +34,10 @@ def home(size):
 class HudPreferences(bpy.types.AddonPreferences):
     bl_idname = __name__
 
-    size: bpy.props.FloatProperty(name="size", default=0.3, min=0.1, max=2.0)
-    display_scale: bpy.props.FloatProperty(default=1.0, min=1.0, max=3.0)
+    size: bpy.props.FloatProperty(
+        name="Size", default=0.3, min=0.1, max=2.0)
+    display_scale: bpy.props.FloatProperty(
+        name="Spacing", default=1.0, min=1.0, max=3.0)
 
     def draw(self, context):
         self.layout.prop(self, "size")
