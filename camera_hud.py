@@ -21,18 +21,15 @@ from bpy_extras import view3d_utils
 # Gizmo Triangle Coords
 size = 0.3
 display_scale =  1
-custom_shape_verts = (
-    (0, 0, 0), (size, size, 0), (size, 0, 0),
-    (0, size, 0), (size, size, 0), (0, 0, 0),
-    )
 
-locked = ((size * 0.3862968683242798, size * 0.8769386410713196, size * 0.0), (size * 0.49802443385124207, size * 0.8148969411849976, size * 0.0), (size * 0.49802443385124207, size * 0.8995057940483093, size * 0.0), (size * 0.49802443385124207, size * 0.8148969411849976, size * 0.0), (size * 0.3862968683242798, size * 0.8769386410713196, size * 0.0), (size * 0.41922473907470703, size * 0.798980712890625, size * 0.0), (size * 0.3862968683242798, size * 0.8769386410713196, size * 0.0), (size * 0.295041024684906, size * 0.8154029846191406, size * 0.0), (size * 0.41922473907470703, size * 0.798980712890625, size * 0.0), (size * 0.641185462474823, size * 0.7555806040763855, size * 0.0), (size * 0.7625436782836914, size * 0.7241472005844116, size * 0.0), (size * 0.7010079026222229, size * 0.8154030442237854, size * 0.0), (size * 0.7010079026222229, size * 0.8154030442237854, size * 0.0), (size * 0.6097519993782043, size * 0.8769387006759644, size * 0.0), (size * 0.5768241286277771, size * 0.798980712890625, size * 0.0), (size * 0.5768241286277771, size * 0.798980712890625, size * 0.0), (size * 0.641185462474823, size * 0.7555806040763855, size * 0.0), (size * 0.7010079026222229, size * 0.8154030442237854, size * 0.0), (size * 0.23350536823272705, size * 0.7241472005844116, size * 0.0), (size * 0.3548634350299835, size * 0.7555806040763855, size * 0.0), (size * 0.295041024684906, size * 0.8154029846191406, size * 0.0), (size * 0.6097519993782043, size * 0.8769387006759644, size * 0.0), (size * 0.49802443385124207, size * 0.8148969411849976, size * 0.0), (size * 0.5768241286277771, size * 0.798980712890625, size * 0.0), (size * 0.23350536823272705, size * 0.7241472005844116, size * 0.0), (size * 0.31146329641342163, size * 0.6912193298339844, size * 0.0), (size * 0.3548634350299835, size * 0.7555806040763855, size * 0.0), (size * 0.6845856308937073, size * 0.6912193298339844, size * 0.0), (size * 0.7625436782836914, size * 0.7241472005844116, size * 0.0), (size * 0.641185462474823, size * 0.7555806040763855, size * 0.0), (size * 0.21093827486038208, size * 0.6124196648597717, size * 0.0), (size * 0.31146329641342163, size * 0.6912193298339844, size * 0.0), (size * 0.23350536823272705, size * 0.7241472005844116, size * 0.0), (size * 0.6845856308937073, size * 0.6912193298339844, size * 0.0), (size * 0.7851107120513916, size * 0.6124196648597717, size * 0.0), (size * 0.7625436782836914, size * 0.7241472005844116, size * 0.0), (size * 0.21093827486038208, size * 0.6124196648597717, size * 0.0), (size * 0.2955470681190491, size * 0.6124196648597717, size * 0.0), (size * 0.31146329641342163, size * 0.6912193298339844, size * 0.0), (size * 0.7005018591880798, size * 0.6124196648597717, size * 0.0), (size * 0.7851107120513916, size * 0.6124196648597717, size * 0.0), (size * 0.6845856308937073, size * 0.6912193298339844, size * 0.0), (size * 0.1658715307712555, size * 0.04843902587890625, size * 0.0), (size * 0.21093827486038208, size * 0.6124196648597717, size * 0.0), (size * 0.1658715307712555, size * 0.6124196648597717, size * 0.0), (size * 0.1658715307712555, size * 0.04843902587890625, size * 0.0), (size * 0.2955470681190491, size * 0.6124196648597717, size * 0.0), (size * 0.21093827486038208, size * 0.6124196648597717, size * 0.0), (size * 0.1658715307712555, size * 0.04843902587890625, size * 0.0), (size * 0.7005018591880798, size * 0.6124196648597717, size * 0.0), (size * 0.2955470681190491, size * 0.6124196648597717, size * 0.0), (size * 0.1658715307712555, size * 0.04843902587890625, size * 0.0), (size * 0.830177366733551, size * 0.04843902587890625, size * 0.0), (size * 0.7005018591880798, size * 0.6124196648597717, size * 0.0), (size * 0.830177366733551, size * 0.04843902587890625, size * 0.0), (size * 0.830177366733551, size * 0.6124196648597717, size * 0.0), (size * 0.7851107120513916, size * 0.6124196648597717, size * 0.0), (size * 0.3548634350299835, size * 0.7555806040763855, size * 0.0), (size * 0.41922473907470703, size * 0.798980712890625, size * 0.0), (size * 0.295041024684906, size * 0.8154029846191406, size * 0.0), (size * 0.49802443385124207, size * 0.8148969411849976, size * 0.0), (size * 0.6097519993782043, size * 0.8769387006759644, size * 0.0), (size * 0.49802443385124207, size * 0.8995057940483093, size * 0.0), (size * 0.830177366733551, size * 0.04843902587890625, size * 0.0), (size * 0.7851107120513916, size * 0.6124196648597717, size * 0.0), (size * 0.7005018591880798, size * 0.6124196648597717, size * 0.0))
+locked = ((size * 0.45052126, size * 0.87532949, -size * 0.00000273),(size * 0.55065256, size * 0.81972712, -size * 0.00000273),(size * 0.55065256, size * 0.89555436, -size * 0.00000273),(size * 0.55065256, size * 0.81972712, -size * 0.00000273),(size * 0.45052126, size * 0.87532949, -size * 0.00000273),(size * 0.48003152, size * 0.80546290, -size * 0.00000273),(size * 0.45052126, size * 0.87532949, -size * 0.00000273),(size * 0.36873698, size * 0.82018065, -size * 0.00000273),(size * 0.48003152, size * 0.80546290, -size * 0.00000273),(size * 0.67895466, size * 0.76656729, -size * 0.00000273),(size * 0.78771693, size * 0.73839647, -size * 0.00000273),(size * 0.73256809, size * 0.82018071, -size * 0.00000273),(size * 0.73256809, size * 0.82018071, -size * 0.00000273),(size * 0.65078378, size * 0.87532949, -size * 0.00000273),(size * 0.62127352, size * 0.80546290, -size * 0.00000273),(size * 0.62127352, size * 0.80546290, -size * 0.00000273),(size * 0.67895466, size * 0.76656729, -size * 0.00000273),(size * 0.73256809, size * 0.82018071, -size * 0.00000273),(size * 0.31358820, size * 0.73839647, -size * 0.00000273),(size * 0.42235038, size * 0.76656729, -size * 0.00000273),(size * 0.36873698, size * 0.82018065, -size * 0.00000273),(size * 0.65078378, size * 0.87532949, -size * 0.00000273),(size * 0.55065256, size * 0.81972712, -size * 0.00000273),(size * 0.62127352, size * 0.80546290, -size * 0.00000273),(size * 0.31358820, size * 0.73839647, -size * 0.00000273),(size * 0.38345477, size * 0.70888621, -size * 0.00000273),(size * 0.42235038, size * 0.76656729, -size * 0.00000273),(size * 0.71785027, size * 0.70888621, -size * 0.00000273),(size * 0.78771693, size * 0.73839647, -size * 0.00000273),(size * 0.67895466, size * 0.76656729, -size * 0.00000273),(size * 0.29336339, size * 0.63826531, -size * 0.00000273),(size * 0.38345477, size * 0.70888621, -size * 0.00000273),(size * 0.31358820, size * 0.73839647, -size * 0.00000273),(size * 0.71785027, size * 0.70888621, -size * 0.00000273),(size * 0.80794168, size * 0.63826531, -size * 0.00000273),(size * 0.78771693, size * 0.73839647, -size * 0.00000273),(size * 0.29336339, size * 0.63826531, -size * 0.00000273),(size * 0.36919051, size * 0.63826531, -size * 0.00000273),(size * 0.38345477, size * 0.70888621, -size * 0.00000273),(size * 0.73211455, size * 0.63826531, -size * 0.00000273),(size * 0.80794168, size * 0.63826531, -size * 0.00000273),(size * 0.71785027, size * 0.70888621, -size * 0.00000273),(size * 0.25297418, size * 0.13282087, -size * 0.00000273),(size * 0.29336339, size * 0.63826531, -size * 0.00000273),(size * 0.25297418, size * 0.63826531, -size * 0.00000273),(size * 0.25297418, size * 0.13282087, -size * 0.00000273),(size * 0.36919051, size * 0.63826531, -size * 0.00000273),(size * 0.29336339, size * 0.63826531, -size * 0.00000273),(size * 0.25297418, size * 0.13282087, -size * 0.00000273),(size * 0.73211455, size * 0.63826531, -size * 0.00000273),(size * 0.36919051, size * 0.63826531, -size * 0.00000273),(size * 0.25297418, size * 0.13282087, -size * 0.00000273),(size * 0.84833086, size * 0.13282087, -size * 0.00000273),(size * 0.73211455, size * 0.63826531, -size * 0.00000273),(size * 0.84833086, size * 0.13282087, -size * 0.00000273),(size * 0.84833086, size * 0.63826531, -size * 0.00000273),(size * 0.80794168, size * 0.63826531, -size * 0.00000273),(size * 0.42235038, size * 0.76656729, -size * 0.00000273),(size * 0.48003152, size * 0.80546290, -size * 0.00000273),(size * 0.36873698, size * 0.82018065, -size * 0.00000273),(size * 0.55065256, size * 0.81972712, -size * 0.00000273),(size * 0.65078378, size * 0.87532949, -size * 0.00000273),(size * 0.55065256, size * 0.89555436, -size * 0.00000273),(size * 0.84833086, size * 0.13282087, -size * 0.00000273),(size * 0.80794168, size * 0.63826531, -size * 0.00000273),(size * 0.73211455, size * 0.63826531, -size * 0.00000273))
+unlocked = ((size * 0.31537026, size * 0.76656723, -size * 0.00000273),(size * 0.41758227, size * 0.73839641, -size * 0.00000273),(size * 0.37271118, size * 0.82018059, -size * 0.00000273),(size * 0.17478977, size * 0.80546284, -size * 0.00000273),(size * 0.22469814, size * 0.81972706, -size * 0.00000273),(size * 0.14322776, size * 0.87532949, -size * 0.00000273),(size * 0.22469814, size * 0.81972706, -size * 0.00000273),(size * 0.30616856, size * 0.87532943, -size * 0.00000273),(size * 0.22469814, size * 0.89555430, -size * 0.00000273),(size * 0.37271118, size * 0.82018059, -size * 0.00000273),(size * 0.30616856, size * 0.87532943, -size * 0.00000273),(size * 0.27460653, size * 0.80546284, -size * 0.00000273),(size * 0.27460653, size * 0.80546284, -size * 0.00000273),(size * 0.31537026, size * 0.76656723, -size * 0.00000273),(size * 0.37271118, size * 0.82018059, -size * 0.00000273),(size * 0.13402605, size * 0.76656723, -size * 0.00000273),(size * 0.17478977, size * 0.80546284, -size * 0.00000273),(size * 0.07668506, size * 0.82018065, -size * 0.00000273),(size * 0.07668506, size * 0.82018065, -size * 0.00000273),(size * 0.17478977, size * 0.80546284, -size * 0.00000273),(size * 0.14322776, size * 0.87532949, -size * 0.00000273),(size * 0.03181396, size * 0.73839641, -size * 0.00000273),(size * 0.10653823, size * 0.70888615, -size * 0.00000273),(size * 0.13402605, size * 0.76656723, -size * 0.00000273),(size * 0.34285805, size * 0.70888615, -size * 0.00000273),(size * 0.41758227, size * 0.73839641, -size * 0.00000273),(size * 0.31537026, size * 0.76656723, -size * 0.00000273),(size * 0.01535828, size * 0.63826525, -size * 0.00000273),(size * 0.10653823, size * 0.70888615, -size * 0.00000273),(size * 0.03181396, size * 0.73839641, -size * 0.00000273),(size * 0.34285805, size * 0.70888615, -size * 0.00000273),(size * 0.43403792, size * 0.63826525, -size * 0.00000273),(size * 0.41758227, size * 0.73839641, -size * 0.00000273),(size * 0.01535828, size * 0.63826525, -size * 0.00000273),(size * 0.09645758, size * 0.63826525, -size * 0.00000273),(size * 0.10653823, size * 0.70888615, -size * 0.00000273),(size * 0.35293865, size * 0.63826525, -size * 0.00000273),(size * 0.43403792, size * 0.63826525, -size * 0.00000273),(size * 0.34285805, size * 0.70888615, -size * 0.00000273),(size * 0.39841390, size * 0.56055987, -size * 0.00000273),(size * 0.35293865, size * 0.63826525, -size * 0.00000273),(size * 0.31621033, size * 0.63826525, -size * 0.00000273),(size * 0.39841390, size * 0.56055987, -size * 0.00000273),(size * 0.43403792, size * 0.63826525, -size * 0.00000273),(size * 0.35293865, size * 0.63826525, -size * 0.00000273),(size * 0.39841390, size * 0.56055987, -size * 0.00000273),(size * 0.91156697, size * 0.63826525, -size * 0.00000273),(size * 0.43403792, size * 0.63826525, -size * 0.00000273),(size * 0.39841390, size * 0.56055987, -size * 0.00000273),(size * 0.82936341, size * 0.56055987, -size * 0.00000273),(size * 0.91156697, size * 0.63826525, -size * 0.00000273),(size * 0.82936341, size * 0.56055987, -size * 0.00000273),(size * 0.91156697, size * 0.13282087, -size * 0.00000273),(size * 0.91156697, size * 0.63826525, -size * 0.00000273),(size * 0.31621033, size * 0.13282087, -size * 0.00000273),(size * 0.39841390, size * 0.21052623, -size * 0.00000273),(size * 0.39841390, size * 0.56055987, -size * 0.00000273),(size * 0.82936341, size * 0.21052623, -size * 0.00000273),(size * 0.91156697, size * 0.13282087, -size * 0.00000273),(size * 0.82936341, size * 0.56055987, -size * 0.00000273),(size * 0.31621033, size * 0.13282087, -size * 0.00000273),(size * 0.82936341, size * 0.21052623, -size * 0.00000273),(size * 0.39841390, size * 0.21052623, -size * 0.00000273),(size * 0.31621033, size * 0.13282087, -size * 0.00000273),(size * 0.91156697, size * 0.13282087, -size * 0.00000273),(size * 0.82936341, size * 0.21052623, -size * 0.00000273),(size * 0.30616856, size * 0.87532943, -size * 0.00000273),(size * 0.22469814, size * 0.81972706, -size * 0.00000273),(size * 0.27460653, size * 0.80546284, -size * 0.00000273),(size * 0.03181396, size * 0.73839641, -size * 0.00000273),(size * 0.13402605, size * 0.76656723, -size * 0.00000273),(size * 0.07668506, size * 0.82018065, -size * 0.00000273),(size * 0.14322776, size * 0.87532949, -size * 0.00000273),(size * 0.22469814, size * 0.81972706, -size * 0.00000273),(size * 0.22469814, size * 0.89555430, -size * 0.00000273),(size * 0.31621033, size * 0.13282087, -size * 0.00000273),(size * 0.39841390, size * 0.56055987, -size * 0.00000273),(size * 0.31621033, size * 0.63826525, -size * 0.00000273))
+home = ((size * 0.13588154, size * 0.26217312, size * 0.00000000),(size * 0.39078629, size * 0.27160430, size * 0.00000000),(size * 0.26804948, size * 0.39434111, size * 0.00000000),(size * 0.09999990, size * 0.10000005, size * 0.00000000),(size * 0.13588154, size * 0.26217312, size * 0.00000000),(size * 0.09999996, size * 0.30000001, size * 0.00000000),(size * 0.13588154, size * 0.26217312, size * 0.00000000),(size * 0.25861835, size * 0.13943630, size * 0.00000000),(size * 0.39078629, size * 0.27160430, size * 0.00000000),(size * 0.09999990, size * 0.10000005, size * 0.00000000),(size * 0.25861835, size * 0.13943630, size * 0.00000000),(size * 0.13588154, size * 0.26217312, size * 0.00000000),(size * 0.09999990, size * 0.10000005, size * 0.00000000),(size * 0.30000001, size * 0.10000002, size * 0.00000000),(size * 0.25861835, size * 0.13943630, size * 0.00000000),(size * 0.10000000, size * 0.69999999, size * 0.00000000),(size * 0.13943632, size * 0.74138165, size * 0.00000000),(size * 0.10000000, size * 0.90000004, size * 0.00000000),(size * 0.13943632, size * 0.74138165, size * 0.00000000),(size * 0.26217312, size * 0.86411846, size * 0.00000000),(size * 0.10000000, size * 0.90000004, size * 0.00000000),(size * 0.26217312, size * 0.86411846, size * 0.00000000),(size * 0.30000001, size * 0.90000004, size * 0.00000000),(size * 0.10000000, size * 0.90000004, size * 0.00000000),(size * 0.13943632, size * 0.74138165, size * 0.00000000),(size * 0.39434111, size * 0.73195052, size * 0.00000000),(size * 0.26217312, size * 0.86411846, size * 0.00000000),(size * 0.27160430, size * 0.60921371, size * 0.00000000),(size * 0.39434111, size * 0.73195052, size * 0.00000000),(size * 0.13943632, size * 0.74138165, size * 0.00000000),(size * 0.60565889, size * 0.26804948, size * 0.00000000),(size * 0.86056370, size * 0.25861835, size * 0.00000000),(size * 0.72839570, size * 0.39078629, size * 0.00000000),(size * 0.86056370, size * 0.25861835, size * 0.00000000),(size * 0.89999998, size * 0.09999990, size * 0.00000000),(size * 0.89999998, size * 0.30000001, size * 0.00000000),(size * 0.73782688, size * 0.13588154, size * 0.00000000),(size * 0.86056370, size * 0.25861835, size * 0.00000000),(size * 0.60565889, size * 0.26804948, size * 0.00000000),(size * 0.73782688, size * 0.13588154, size * 0.00000000),(size * 0.89999998, size * 0.09999990, size * 0.00000000),(size * 0.86056370, size * 0.25861835, size * 0.00000000),(size * 0.69999999, size * 0.09999996, size * 0.00000000),(size * 0.89999998, size * 0.09999990, size * 0.00000000),(size * 0.73782688, size * 0.13588154, size * 0.00000000),(size * 0.74138165, size * 0.86056370, size * 0.00000000),(size * 0.90000010, size * 0.89999998, size * 0.00000000),(size * 0.69999999, size * 0.89999998, size * 0.00000000),(size * 0.74138165, size * 0.86056370, size * 0.00000000),(size * 0.86411846, size * 0.73782688, size * 0.00000000),(size * 0.90000010, size * 0.89999998, size * 0.00000000),(size * 0.86411846, size * 0.73782688, size * 0.00000000),(size * 0.90000004, size * 0.69999999, size * 0.00000000),(size * 0.90000010, size * 0.89999998, size * 0.00000000),(size * 0.60921371, size * 0.72839570, size * 0.00000000),(size * 0.86411846, size * 0.73782688, size * 0.00000000),(size * 0.74138165, size * 0.86056370, size * 0.00000000),(size * 0.60921371, size * 0.72839570, size * 0.00000000),(size * 0.73195052, size * 0.60565889, size * 0.00000000),(size * 0.86411846, size * 0.73782688, size * 0.00000000))
 
-unlocked = ((size * 0.3347567915916443, size * 0.7555806040763855, size * 0.0), (size * 0.44880616664886475, size * 0.7241472005844116, size * 0.0), (size * 0.3987385034561157, size * 0.8154029846191406, size * 0.0), (size * 0.17789548635482788, size * 0.798980712890625, size * 0.0), (size * 0.23358383774757385, size * 0.8148969411849976, size * 0.0), (size * 0.14267821609973907, size * 0.8769387006759644, size * 0.0), (size * 0.23358383774757385, size * 0.8148969411849976, size * 0.0), (size * 0.32448944449424744, size * 0.8769386410713196, size * 0.0), (size * 0.23358383774757385, size * 0.8995057940483093, size * 0.0), (size * 0.3987385034561157, size * 0.8154029846191406, size * 0.0), (size * 0.32448944449424744, size * 0.8769386410713196, size * 0.0), (size * 0.2892721891403198, size * 0.798980712890625, size * 0.0), (size * 0.2892721891403198, size * 0.798980712890625, size * 0.0), (size * 0.3347567915916443, size * 0.7555806040763855, size * 0.0), (size * 0.3987385034561157, size * 0.8154029846191406, size * 0.0), (size * 0.13241085410118103, size * 0.7555806040763855, size * 0.0), (size * 0.17789548635482788, size * 0.798980712890625, size * 0.0), (size * 0.0684291273355484, size * 0.8154030442237854, size * 0.0), (size * 0.0684291273355484, size * 0.8154030442237854, size * 0.0), (size * 0.17789548635482788, size * 0.798980712890625, size * 0.0), (size * 0.14267821609973907, size * 0.8769387006759644, size * 0.0), (size * 0.018361438065767288, size * 0.7241472005844116, size * 0.0), (size * 0.10173964500427246, size * 0.6912193298339844, size * 0.0), (size * 0.13241085410118103, size * 0.7555806040763855, size * 0.0), (size * 0.36542800068855286, size * 0.6912193298339844, size * 0.0), (size * 0.44880616664886475, size * 0.7241472005844116, size * 0.0), (size * 0.3347567915916443, size * 0.7555806040763855, size * 0.0), (size * 0.0, size * 0.6124196648597717, size * 0.0), (size * 0.10173964500427246, size * 0.6912193298339844, size * 0.0), (size * 0.018361438065767288, size * 0.7241472005844116, size * 0.0), (size * 0.36542800068855286, size * 0.6912193298339844, size * 0.0), (size * 0.46716758608818054, size * 0.6124196648597717, size * 0.0), (size * 0.44880616664886475, size * 0.7241472005844116, size * 0.0), (size * 0.0, size * 0.6124196648597717, size * 0.0), (size * 0.09049153327941895, size * 0.6124196648597717, size * 0.0), (size * 0.10173964500427246, size * 0.6912193298339844, size * 0.0), (size * 0.376676082611084, size * 0.6124196648597717, size * 0.0), (size * 0.46716758608818054, size * 0.6124196648597717, size * 0.0), (size * 0.36542800068855286, size * 0.6912193298339844, size * 0.0), (size * 0.4274178743362427, size * 0.5257151126861572, size * 0.0), (size * 0.376676082611084, size * 0.6124196648597717, size * 0.0), (size * 0.33569416403770447, size * 0.6124196648597717, size * 0.0), (size * 0.4274178743362427, size * 0.5257151126861572, size * 0.0), (size * 0.46716758608818054, size * 0.6124196648597717, size * 0.0), (size * 0.376676082611084, size * 0.6124196648597717, size * 0.0), (size * 0.4274178743362427, size * 0.5257151126861572, size * 0.0), (size * 1.0, size * 0.6124196648597717, size * 0.0), (size * 0.46716758608818054, size * 0.6124196648597717, size * 0.0), (size * 0.4274178743362427, size * 0.5257151126861572, size * 0.0), (size * 0.9082762598991394, size * 0.5257151126861572, size * 0.0), (size * 1.0, size * 0.6124196648597717, size * 0.0), (size * 0.9082762598991394, size * 0.5257151126861572, size * 0.0), (size * 1.0, size * 0.04843902587890625, size * 0.0), (size * 1.0, size * 0.6124196648597717, size * 0.0), (size * 0.33569416403770447, size * 0.04843902587890625, size * 0.0), (size * 0.4274178743362427, size * 0.13514354825019836, size * 0.0), (size * 0.4274178743362427, size * 0.5257151126861572, size * 0.0), (size * 0.9082762598991394, size * 0.13514354825019836, size * 0.0), (size * 1.0, size * 0.04843902587890625, size * 0.0), (size * 0.9082762598991394, size * 0.5257151126861572, size * 0.0), (size * 0.33569416403770447, size * 0.04843902587890625, size * 0.0), (size * 0.9082762598991394, size * 0.13514354825019836, size * 0.0), (size * 0.4274178743362427, size * 0.13514354825019836, size * 0.0), (size * 0.33569416403770447, size * 0.04843902587890625, size * 0.0), (size * 1.0, size * 0.04843902587890625, size * 0.0), (size * 0.9082762598991394, size * 0.13514354825019836, size * 0.0), (size * 0.32448944449424744, size * 0.8769386410713196, size * 0.0), (size * 0.23358383774757385, size * 0.8148969411849976, size * 0.0), (size * 0.2892721891403198, size * 0.798980712890625, size * 0.0), (size * 0.018361438065767288, size * 0.7241472005844116, size * 0.0), (size * 0.13241085410118103, size * 0.7555806040763855, size * 0.0), (size * 0.0684291273355484, size * 0.8154030442237854, size * 0.0), (size * 0.14267821609973907, size * 0.8769387006759644, size * 0.0), (size * 0.23358383774757385, size * 0.8148969411849976, size * 0.0), (size * 0.23358383774757385, size * 0.8995057940483093, size * 0.0), (size * 0.33569416403770447, size * 0.04843902587890625, size * 0.0), (size * 0.4274178743362427, size * 0.5257151126861572, size * 0.0), (size * 0.33569416403770447, size * 0.6124196648597717, size * 0.0))
 
-class ButtonWidget(bpy.types.Gizmo):
+class ViewLockWidget(bpy.types.Gizmo):
     """ Custom 'button' gizmo for camera """
-    bl_idname = "VIEW3D_GT_button_widget"
+    bl_idname = "VIEW3D_GT_viewlock_widget"
     
     locked: bpy.props.BoolProperty(default=True)
 
@@ -46,7 +43,6 @@ class ButtonWidget(bpy.types.Gizmo):
         self.draw_custom_shape(self.shape(), select_id=select_id)
 
     def setup(self):
-        # TODO remove the size offset once matrix is figured out
         if not hasattr(self, "unlocked_shape"):
             self.unlocked_shape = self.new_custom_shape(
                 'TRIS', unlocked)
@@ -55,7 +51,23 @@ class ButtonWidget(bpy.types.Gizmo):
                 'TRIS', locked)
 
 
-def gizmo_matrix(context):
+class HomeWidget(bpy.types.Gizmo):
+    """ Custom 'full screen' gizmo for camera """
+    bl_idname = "VIEW3D_GT_frame_all_widget"
+
+    def draw(self, context):
+        self.draw_custom_shape(self.home_shape)
+
+    def draw_select(self, context, select_id):
+        self.draw_custom_shape(self.home_shape, select_id=select_id)
+
+    def setup(self):
+        if not hasattr(self, "home_shape"):
+            self.home_shape = self.new_custom_shape(
+                'TRIS', home)
+
+
+def gizmo_matrix(context, offset_x=0, offset_y=0, left=False, top=False):
     """ Get the gizmo matrix so it sits next to the camera frame """
     space = context.space_data
     scene = context.scene
@@ -99,9 +111,10 @@ def gizmo_matrix(context):
         loc_vec)
 
     maxwidth = context.area.width - ui.width
+
     loc2d[1] = max(loc2d[1], 0)
     loc2d[0] = min(loc2d[0], maxwidth)
-
+    loc2d = loc2d + gizmo_size * size * mathutils.Vector((offset_x, offset_y))
 
     # and subtract gizmo width
     origin2d = loc2d - mathutils.Vector((display_scale * gizmo_size * size, 0))
@@ -123,7 +136,6 @@ def gizmo_color(context):
     """ Color the gizmo based on lock_camera """
     space = context.space_data
     return context.preferences.themes['Default'].user_interface.gizmo_primary
-    return (1.0, 0.5, 0.0) if space.lock_camera else (0.0, 0.0, 0.0)
 
 
 class ToggleView(bpy.types.Operator):
@@ -139,7 +151,7 @@ class ToggleView(bpy.types.Operator):
         context.space_data.lock_camera = not context.space_data.lock_camera
         return {'FINISHED'}
 
-       
+
 class ViewLockGroup(bpy.types.GizmoGroup):
     bl_idname = "VIEW_GGT_Lock_View"
     bl_label = "Lock Camera View"
@@ -155,7 +167,7 @@ class ViewLockGroup(bpy.types.GizmoGroup):
 
     def setup(self, context):
 
-        gz = self.gizmos.new(ButtonWidget.bl_idname)
+        gz = self.gizmos.new(ViewLockWidget.bl_idname)
         gz.target_set_operator(ToggleView.bl_idname) 
 
         gz.matrix_basis =  gizmo_matrix(context)
@@ -179,21 +191,61 @@ class ViewLockGroup(bpy.types.GizmoGroup):
         gz = self.view_lock_gizmo
         gz.locked = context.space_data.lock_camera
         gz.matrix_basis = gizmo_matrix(context)
-        
 
+
+class FrameCameraGroup(bpy.types.GizmoGroup):
+    bl_idname = "VIEW_GGT_Frame_camera_bounds"
+    bl_label = "Frame Camera Bounds"
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'WINDOW'
+    bl_options = {'3D', 'PERSISTENT', 'SELECT'}
+
+    @classmethod
+    def poll(cls, context):
+        return (
+            context.region_data.view_perspective == 'CAMERA'
+            )
+
+    def setup(self, context):
+
+        gz = self.gizmos.new(HomeWidget.bl_idname)
+        gz.target_set_operator("view3d.view_center_camera")
+
+        gz.matrix_basis =  gizmo_matrix(context, offset_y=1)
+        gz.color = gizmo_color(context)
+        gz.alpha = 0.5
+
+        gz.color_highlight = gz.color
+        gz.alpha_highlight = 1.0
+
+        self.frame_camera_gizmo = gz
+
+    def refresh(self, context):
+        space = context.space_data
+        gz = self.frame_camera_gizmo
+        gz.color = gizmo_color(context)
+        gz.color_highlight = gz.color
+        gz.matrix_basis =  gizmo_matrix(context, offset_y=1)
         
+    def draw_prepare(self, context):
+        gz = self.frame_camera_gizmo
+        gz.matrix_basis = gizmo_matrix(context, offset_y=1)
 
 
 def register():
-    bpy.utils.register_class(ButtonWidget)
+    bpy.utils.register_class(ViewLockWidget)
+    bpy.utils.register_class(HomeWidget)
     bpy.utils.register_class(ToggleView)
     bpy.utils.register_class(ViewLockGroup)
+    bpy.utils.register_class(FrameCameraGroup)
 
 
 def unregister():
-    bpy.utils.unregister_class(ButtonWidget)
+    bpy.utils.unregister_class(ViewLockWidget)
+    bpy.utils.unregister_class(HomeWidget)
     bpy.utils.unregister_class(ToggleView)
     bpy.utils.unregister_class(ViewLockGroup)
+    bpy.utils.unregister_class(FrameCameraGroup)
     
 if __name__ == "__main__":
     register()
