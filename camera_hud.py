@@ -34,6 +34,7 @@ def home(size):
 
 # Property updaters
 def size_update(self, context):
+    """ A bit of an ungainly solution to update gizmos on size change """
     gizmo_unregister()
     gizmo_register()
 
@@ -159,7 +160,6 @@ def gizmo_matrix(context, offset_x=0, offset_y=0, anchor="bottom_left"):
 
 def gizmo_color(context):
     """ Color the gizmo based on lock_camera """
-    space = context.space_data
     return context.preferences.themes['Default'].user_interface.gizmo_primary
 
 
@@ -191,7 +191,6 @@ class ViewLockGroup(bpy.types.GizmoGroup):
             )
 
     def setup(self, context):
-
         gz = self.gizmos.new(ViewLockWidget.bl_idname)
         gz.target_set_operator(ToggleView.bl_idname) 
 
