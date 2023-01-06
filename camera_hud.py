@@ -32,8 +32,8 @@ def home(size):
     return ((size * 0.13588154, size * 0.26217312, size * 0.00000000),(size * 0.39078629, size * 0.27160430, size * 0.00000000),(size * 0.26804948, size * 0.39434111, size * 0.00000000),(size * 0.09999990, size * 0.10000005, size * 0.00000000),(size * 0.13588154, size * 0.26217312, size * 0.00000000),(size * 0.09999996, size * 0.30000001, size * 0.00000000),(size * 0.13588154, size * 0.26217312, size * 0.00000000),(size * 0.25861835, size * 0.13943630, size * 0.00000000),(size * 0.39078629, size * 0.27160430, size * 0.00000000),(size * 0.09999990, size * 0.10000005, size * 0.00000000),(size * 0.25861835, size * 0.13943630, size * 0.00000000),(size * 0.13588154, size * 0.26217312, size * 0.00000000),(size * 0.09999990, size * 0.10000005, size * 0.00000000),(size * 0.30000001, size * 0.10000002, size * 0.00000000),(size * 0.25861835, size * 0.13943630, size * 0.00000000),(size * 0.10000000, size * 0.69999999, size * 0.00000000),(size * 0.13943632, size * 0.74138165, size * 0.00000000),(size * 0.10000000, size * 0.90000004, size * 0.00000000),(size * 0.13943632, size * 0.74138165, size * 0.00000000),(size * 0.26217312, size * 0.86411846, size * 0.00000000),(size * 0.10000000, size * 0.90000004, size * 0.00000000),(size * 0.26217312, size * 0.86411846, size * 0.00000000),(size * 0.30000001, size * 0.90000004, size * 0.00000000),(size * 0.10000000, size * 0.90000004, size * 0.00000000),(size * 0.13943632, size * 0.74138165, size * 0.00000000),(size * 0.39434111, size * 0.73195052, size * 0.00000000),(size * 0.26217312, size * 0.86411846, size * 0.00000000),(size * 0.27160430, size * 0.60921371, size * 0.00000000),(size * 0.39434111, size * 0.73195052, size * 0.00000000),(size * 0.13943632, size * 0.74138165, size * 0.00000000),(size * 0.60565889, size * 0.26804948, size * 0.00000000),(size * 0.86056370, size * 0.25861835, size * 0.00000000),(size * 0.72839570, size * 0.39078629, size * 0.00000000),(size * 0.86056370, size * 0.25861835, size * 0.00000000),(size * 0.89999998, size * 0.09999990, size * 0.00000000),(size * 0.89999998, size * 0.30000001, size * 0.00000000),(size * 0.73782688, size * 0.13588154, size * 0.00000000),(size * 0.86056370, size * 0.25861835, size * 0.00000000),(size * 0.60565889, size * 0.26804948, size * 0.00000000),(size * 0.73782688, size * 0.13588154, size * 0.00000000),(size * 0.89999998, size * 0.09999990, size * 0.00000000),(size * 0.86056370, size * 0.25861835, size * 0.00000000),(size * 0.69999999, size * 0.09999996, size * 0.00000000),(size * 0.89999998, size * 0.09999990, size * 0.00000000),(size * 0.73782688, size * 0.13588154, size * 0.00000000),(size * 0.74138165, size * 0.86056370, size * 0.00000000),(size * 0.90000010, size * 0.89999998, size * 0.00000000),(size * 0.69999999, size * 0.89999998, size * 0.00000000),(size * 0.74138165, size * 0.86056370, size * 0.00000000),(size * 0.86411846, size * 0.73782688, size * 0.00000000),(size * 0.90000010, size * 0.89999998, size * 0.00000000),(size * 0.86411846, size * 0.73782688, size * 0.00000000),(size * 0.90000004, size * 0.69999999, size * 0.00000000),(size * 0.90000010, size * 0.89999998, size * 0.00000000),(size * 0.60921371, size * 0.72839570, size * 0.00000000),(size * 0.86411846, size * 0.73782688, size * 0.00000000),(size * 0.74138165, size * 0.86056370, size * 0.00000000),(size * 0.60921371, size * 0.72839570, size * 0.00000000),(size * 0.73195052, size * 0.60565889, size * 0.00000000),(size * 0.86411846, size * 0.73782688, size * 0.00000000))
 
 size = 2.0
-arcside = ((-size * 0.35355338, size * 0.35355341, size * 0.00000000),(-size * 0.41573477, size * 0.27778512, size * 0.00000000),(-size * 0.46193975, size * 0.19134170, size * 0.00000000),(-size * 0.49039260, size * 0.09754515, size * 0.00000000),(-size * 0.50000000, size * 0.00000000, size * 0.00000000),(-size * 0.49039263, -size * 0.09754515, size * 0.00000000),(-size * 0.46193975, -size * 0.19134170, size * 0.00000000),(-size * 0.41573477, -size * 0.27778512, size * 0.00000000),(-size * 0.35355335, -size * 0.35355341, size * 0.00000000))
-arcbottom = ((-size * 0.35355338, -size * 0.35355341, size * 0.00000000),(-size * 0.27778509, -size * 0.41573477, size * 0.00000000),(-size * 0.19134170, -size * 0.46193975, size * 0.00000000),(-size * 0.09754512, -size * 0.49039257, size * 0.00000000),(size * 0.00000000, -size * 0.50000000, size * 0.00000000),(size * 0.09754515, -size * 0.49039263, size * 0.00000000),(size * 0.19134170, -size * 0.46193975, size * 0.00000000),(size * 0.27778518, -size * 0.41573477, size * 0.00000000),(size * 0.35355341, -size * 0.35355332, size * 0.00000000))
+arcside = ((-size * 0.49039260, size * 0.09754515, size * 0.00000000),(-size * 0.44747975, size * 0.18535216, size * 0.00000000),(-size * 0.46193975, size * 0.19134170, size * 0.00000000),(-size * 0.41573477, size * 0.27778512, size * 0.00000000),(-size * 0.34248617, size * 0.34248620, size * 0.00000000),(-size * 0.35355338, size * 0.35355341, size * 0.00000000),(-size * 0.41573477, -size * 0.27778512, size * 0.00000000),(-size * 0.34248614, -size * 0.34248620, size * 0.00000000),(-size * 0.40272108, -size * 0.26908967, size * 0.00000000),(-size * 0.46193975, -size * 0.19134170, size * 0.00000000),(-size * 0.47504196, -size * 0.09449171, size * 0.00000000),(-size * 0.49039263, -size * 0.09754515, size * 0.00000000),(-size * 0.49039260, size * 0.09754515, size * 0.00000000),(-size * 0.48434860, size * 0.00000000, size * 0.00000000),(-size * 0.47504193, size * 0.09449171, size * 0.00000000),(-size * 0.41573477, size * 0.27778512, size * 0.00000000),(-size * 0.44747975, size * 0.18535216, size * 0.00000000),(-size * 0.40272108, size * 0.26908967, size * 0.00000000),(-size * 0.41573477, -size * 0.27778512, size * 0.00000000),(-size * 0.44747975, -size * 0.18535216, size * 0.00000000),(-size * 0.46193975, -size * 0.19134170, size * 0.00000000),(-size * 0.49039263, -size * 0.09754515, size * 0.00000000),(-size * 0.48434860, size * 0.00000000, size * 0.00000000),(-size * 0.50000000, size * 0.00000000, size * 0.00000000),(-size * 0.49039260, size * 0.09754515, size * 0.00000000),(-size * 0.47504193, size * 0.09449171, size * 0.00000000),(-size * 0.44747975, size * 0.18535216, size * 0.00000000),(-size * 0.41573477, size * 0.27778512, size * 0.00000000),(-size * 0.40272108, size * 0.26908967, size * 0.00000000),(-size * 0.34248617, size * 0.34248620, size * 0.00000000),(-size * 0.41573477, -size * 0.27778512, size * 0.00000000),(-size * 0.35355335, -size * 0.35355341, size * 0.00000000),(-size * 0.34248614, -size * 0.34248620, size * 0.00000000),(-size * 0.46193975, -size * 0.19134170, size * 0.00000000),(-size * 0.44747975, -size * 0.18535216, size * 0.00000000),(-size * 0.47504196, -size * 0.09449171, size * 0.00000000),(-size * 0.49039260, size * 0.09754515, size * 0.00000000),(-size * 0.50000000, size * 0.00000000, size * 0.00000000),(-size * 0.48434860, size * 0.00000000, size * 0.00000000),(-size * 0.41573477, size * 0.27778512, size * 0.00000000),(-size * 0.46193975, size * 0.19134170, size * 0.00000000),(-size * 0.44747975, size * 0.18535216, size * 0.00000000),(-size * 0.41573477, -size * 0.27778512, size * 0.00000000),(-size * 0.40272108, -size * 0.26908967, size * 0.00000000),(-size * 0.44747975, -size * 0.18535216, size * 0.00000000),(-size * 0.49039263, -size * 0.09754515, size * 0.00000000),(-size * 0.47504196, -size * 0.09449171, size * 0.00000000),(-size * 0.48434860, size * 0.00000000, size * 0.00000000))
+arcbottom = ((size * 0.27778518, -size * 0.41573477, size * 0.00000000),(size * 0.18525776, -size * 0.44725186, size * 0.00000000),(size * 0.19134170, -size * 0.46193975, size * 0.00000000),(size * 0.09754515, -size * 0.49039263, size * 0.00000000),(size * 0.00000000, -size * 0.48410192, size * 0.00000000),(size * 0.00000000, -size * 0.50000000, size * 0.00000000),(-size * 0.09754512, -size * 0.49039257, size * 0.00000000),(-size * 0.18525776, -size * 0.44725186, size * 0.00000000),(-size * 0.19134170, -size * 0.46193975, size * 0.00000000),(-size * 0.35355338, -size * 0.35355341, size * 0.00000000),(-size * 0.26895261, -size * 0.40251598, size * 0.00000000),(-size * 0.34231177, -size * 0.34231180, size * 0.00000000),(size * 0.35355341, -size * 0.35355332, size * 0.00000000),(size * 0.26895270, -size * 0.40251598, size * 0.00000000),(size * 0.27778518, -size * 0.41573477, size * 0.00000000),(size * 0.19134170, -size * 0.46193975, size * 0.00000000),(size * 0.09444358, -size * 0.47480002, size * 0.00000000),(size * 0.09754515, -size * 0.49039263, size * 0.00000000),(-size * 0.09754512, -size * 0.49039257, size * 0.00000000),(size * 0.00000000, -size * 0.48410192, size * 0.00000000),(-size * 0.09444356, -size * 0.47479996, size * 0.00000000),(-size * 0.27778509, -size * 0.41573477, size * 0.00000000),(-size * 0.18525776, -size * 0.44725186, size * 0.00000000),(-size * 0.26895261, -size * 0.40251598, size * 0.00000000),(size * 0.27778518, -size * 0.41573477, size * 0.00000000),(size * 0.26895270, -size * 0.40251598, size * 0.00000000),(size * 0.18525776, -size * 0.44725186, size * 0.00000000),(size * 0.09754515, -size * 0.49039263, size * 0.00000000),(size * 0.09444358, -size * 0.47480002, size * 0.00000000),(size * 0.00000000, -size * 0.48410192, size * 0.00000000),(-size * 0.09754512, -size * 0.49039257, size * 0.00000000),(-size * 0.09444356, -size * 0.47479996, size * 0.00000000),(-size * 0.18525776, -size * 0.44725186, size * 0.00000000),(-size * 0.35355338, -size * 0.35355341, size * 0.00000000),(-size * 0.27778509, -size * 0.41573477, size * 0.00000000),(-size * 0.26895261, -size * 0.40251598, size * 0.00000000),(size * 0.35355341, -size * 0.35355332, size * 0.00000000),(size * 0.34231180, -size * 0.34231171, size * 0.00000000),(size * 0.26895270, -size * 0.40251598, size * 0.00000000),(size * 0.19134170, -size * 0.46193975, size * 0.00000000),(size * 0.18525776, -size * 0.44725186, size * 0.00000000),(size * 0.09444358, -size * 0.47480002, size * 0.00000000),(-size * 0.09754512, -size * 0.49039257, size * 0.00000000),(size * 0.00000000, -size * 0.50000000, size * 0.00000000),(size * 0.00000000, -size * 0.48410192, size * 0.00000000),(-size * 0.27778509, -size * 0.41573477, size * 0.00000000),(-size * 0.19134170, -size * 0.46193975, size * 0.00000000),(-size * 0.18525776, -size * 0.44725186, size * 0.00000000))
 
 moveside = sorted(
     [(size * 0.41864729, -size * 0.08419549, size * 0.00000000),(size * 0.41864729, size * 0.08419549, size * 0.00000000),(size * 0.50284278, size * 0.00000000, size * 0.00000000)],
@@ -43,9 +43,14 @@ moveup = sorted(
     ((size * 0.08419552, size * 0.41864729, size * 0.00000000),(-size * 0.08419549, size * 0.41864729, size * 0.00000000),(size * 0.00000006, size * 0.50284278, size * 0.00000000)),
     key=lambda x: x[0],
     )
-movedepth = ((-size * 0.05862415, size * 0.06000002, size * 0.00000000),(-size * 0.00862414, size * 0.00000000, size * 0.00000000),(size * 0.05862415, -size * 0.06000002, size * 0.00000000),(size * 0.00862414, size * 0.00000000, size * 0.00000000),(-size * 0.05862415, -size * 0.06000002, size * 0.00000000),(size * 0.05862415, size * 0.06000002, size * 0.00000000))
+
+moveside = ((size * 0.50640213, size * 0.08419549, size * 0.00000000),(size * 0.57384509, size * 0.00000000, size * 0.00000000),(size * 0.49228519, size * 0.08155994, size * 0.00000000),(size * 0.50640213, -size * 0.08419549, size * 0.00000000),(size * 0.57384509, size * 0.00000000, size * 0.00000000),(size * 0.59059763, size * 0.00000000, size * 0.00000000),(size * 0.50640213, size * 0.08419549, size * 0.00000000),(size * 0.59059763, size * 0.00000000, size * 0.00000000),(size * 0.57384509, size * 0.00000000, size * 0.00000000),(size * 0.50640213, -size * 0.08419549, size * 0.00000000),(size * 0.49228519, -size * 0.08155994, size * 0.00000000),(size * 0.57384509, size * 0.00000000, size * 0.00000000))
+moveup = ((-size * 0.08419549, size * 0.50640190, size * 0.00000000),(size * 0.00000006, size * 0.57384485, size * 0.00000000),(-size * 0.08155994, size * 0.49228495, size * 0.00000000),(size * 0.08419552, size * 0.50640190, size * 0.00000000),(size * 0.00000006, size * 0.57384485, size * 0.00000000),(size * 0.00000006, size * 0.59059739, size * 0.00000000),(-size * 0.08419549, size * 0.50640190, size * 0.00000000),(size * 0.00000006, size * 0.59059739, size * 0.00000000),(size * 0.00000006, size * 0.57384485, size * 0.00000000),(size * 0.08419552, size * 0.50640190, size * 0.00000000),(size * 0.08155997, size * 0.49228495, size * 0.00000000),(size * 0.00000006, size * 0.57384485, size * 0.00000000))
+movedepth = ((size * 0.06000001, -size * 0.05862415, size * 0.00000000),(-size * 0.00000000, -size * 0.02464572, size * 0.00000000),(size * 0.00000000, -size * 0.00862414, size * 0.00000000),(size * 0.06000002, size * 0.05862414, size * 0.00000000),(size * 0.00000000, size * 0.02422005, size * 0.00000000),(size * 0.00000000, size * 0.00862414, size * 0.00000000),(-size * 0.06000001, size * 0.05862415, size * 0.00000000),(size * 0.00000000, size * 0.02422005, size * 0.00000000),(-size * 0.06000001, size * 0.07422006, size * 0.00000000),(-size * 0.06000002, -size * 0.05862414, size * 0.00000000),(-size * 0.00000000, -size * 0.02464572, size * 0.00000000),(-size * 0.06000002, -size * 0.07464573, size * 0.00000000),(size * 0.06000001, -size * 0.05862415, size * 0.00000000),(size * 0.06000001, -size * 0.07464573, size * 0.00000000),(-size * 0.00000000, -size * 0.02464572, size * 0.00000000),(size * 0.06000002, size * 0.05862414, size * 0.00000000),(size * 0.06000002, size * 0.07422006, size * 0.00000000),(size * 0.00000000, size * 0.02422005, size * 0.00000000),(-size * 0.06000001, size * 0.05862415, size * 0.00000000),(size * 0.00000000, size * 0.00862414, size * 0.00000000),(size * 0.00000000, size * 0.02422005, size * 0.00000000),(-size * 0.06000002, -size * 0.05862414, size * 0.00000000),(size * 0.00000000, -size * 0.00862414, size * 0.00000000),(-size * 0.00000000, -size * 0.02464572, size * 0.00000000))
 
 # Property updaters
+
+
 def size_update(self, context):
     """ A bit of an ungainly solution to update gizmos on size change """
     gizmo_unregister()
@@ -140,7 +145,7 @@ class ArcSideWidget(Transformer):
 
     def setup(self):
         if not hasattr(self, "custom_shape"):
-            self.custom_shape = self.new_custom_shape('LINE_STRIP', arcside)
+            self.custom_shape = self.new_custom_shape('TRIS', arcside)
 
 
 class ArcBottomWidget(Transformer):
@@ -148,7 +153,7 @@ class ArcBottomWidget(Transformer):
 
     def setup(self):
         if not hasattr(self, "custom_shape"):
-            self.custom_shape = self.new_custom_shape('LINE_STRIP', arcbottom)
+            self.custom_shape = self.new_custom_shape('TRIS', arcbottom)
 
 
 class XMoveWidget(Transformer):
@@ -156,7 +161,7 @@ class XMoveWidget(Transformer):
 
     def setup(self):
         if not hasattr(self, "custom_shape"):
-            self.custom_shape = self.new_custom_shape('LINE_STRIP', moveside)
+            self.custom_shape = self.new_custom_shape('TRIS', moveside)
 
 
 class YMoveWidget(Transformer):
@@ -164,7 +169,7 @@ class YMoveWidget(Transformer):
 
     def setup(self):
         if not hasattr(self, "custom_shape"):
-            self.custom_shape = self.new_custom_shape('LINE_STRIP', moveup)
+            self.custom_shape = self.new_custom_shape('TRIS', moveup)
 
 
 class ZMoveWidget(Transformer):
@@ -172,7 +177,7 @@ class ZMoveWidget(Transformer):
 
     def setup(self):
         if not hasattr(self, "custom_shape"):
-            self.custom_shape = self.new_custom_shape('LINE_STRIP', movedepth)
+            self.custom_shape = self.new_custom_shape('TRIS', movedepth)
 
 
 class CameraTransformGroup(bpy.types.GizmoGroup):
@@ -187,11 +192,11 @@ class CameraTransformGroup(bpy.types.GizmoGroup):
         cam = context.space_data.camera
         selected = context.selected_objects
         return (
-            context.region_data.view_perspective == 'CAMERA' and context.active_object == cam and len(selected) == 1 and cam in selected
+            context.region_data.view_perspective == 'CAMERA' and context.active_object == cam and
+            len(selected) == 1 and cam in selected
             )
 
     def setup(self, context):
-        # Assign the 'offset' target property to the light energy.
         ob = context.object
         # gz = self.gizmos.new(MyCustomShapeWidget.bl_idname)
         theme = context.preferences.themes['Default'].user_interface
@@ -270,16 +275,21 @@ def gizmo_matrix(context, offset_x=0, offset_y=0, anchor="bottom_left"):
     display_scale = preferences.addons[__name__].preferences.display_scale
 
     res_x, res_y = (scene.render.resolution_x, scene.render.resolution_y)
-    landscape = res_x > res_y
-    angle = cam.angle_x / 2 if landscape else cam.angle_y / 2
+
+    # we can have 'wrong' sensor fitting for the display aspect
+    shift_flip = cam.sensor_fit != ('VERTICAL' if res_x > res_y else 'HORIZONTAL')
+    landscape = (res_x > res_y) if shift_flip else (res_x < res_y)
+
+    angle = cam.angle / 2
     base = math.tan(angle) * z
+    
     x = base if landscape else base * res_x / res_y
     y = base * res_y / res_x if landscape else base
-    largest = max(x, y)
+    largest = max(x, y) if shift_flip else min(x, y)
 
     # first we're getting camera space coords of the anchor
     loc = Vector((
-        x + largest * 2 * cam.shift_x ,
+        x + largest * 2 * cam.shift_x,
         -y + largest * 2 * cam.shift_y,
         -z
         ))
@@ -287,6 +297,8 @@ def gizmo_matrix(context, offset_x=0, offset_y=0, anchor="bottom_left"):
     loc_cam = ob.matrix_world @ Matrix.Translation(loc)
     # just the translation part
     loc_vec= loc_cam.to_translation()
+    
+    
 
     # now we get that in screen pixels
     loc2d = bpy_extras.view3d_utils.location_3d_to_region_2d(
@@ -306,12 +318,11 @@ def gizmo_matrix(context, offset_x=0, offset_y=0, anchor="bottom_left"):
         context.region,
         context.space_data.region_3d,
         origin2d,
-        loc_vec
+        Vector((0,0,-z))
         )
     # shift it in and out of camera space to get the orientation right
     loc_out = ob.matrix_world.inverted() @ Matrix.Translation(loc_shift)
     loc_cam = ob.matrix_world @ Matrix.Translation(loc_out.to_translation())
-
     return loc_cam.normalized()
 
 
@@ -453,3 +464,4 @@ def unregister():
     
 if __name__ == "__main__":
     register()
+
