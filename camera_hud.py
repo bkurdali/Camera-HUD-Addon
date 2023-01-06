@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Camera Hud",
     "author": "Bassam Kurdali",
-    "version": (1, 0),
+    "version": (1, 1),
     "blender": (2, 80, 0),
     "location": "View3D",
     "description": "Not a HUD",
