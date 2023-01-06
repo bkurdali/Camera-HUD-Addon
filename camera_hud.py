@@ -318,7 +318,7 @@ def gizmo_matrix(context, offset_x=0, offset_y=0, anchor="bottom_left"):
         context.region,
         context.space_data.region_3d,
         origin2d,
-        Vector((0,0,-z))
+        loc_vec
         )
     # shift it in and out of camera space to get the orientation right
     loc_out = ob.matrix_world.inverted() @ Matrix.Translation(loc_shift)
