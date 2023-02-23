@@ -237,79 +237,86 @@ class CameraTransformGroup(bpy.types.GizmoGroup):
             gz.matrix_basis = (ob.matrix_world @ mathutils.Matrix.Translation(mathutils.Vector((0,0,-1)))).normalized()
 
 
-def gizmo_matrix(context, offset_x=0, offset_y=0, anchor="bottom_left"):
-    """ Get the gizmo matrix so it sits next to the camera frame """
-    space = context.space_data
-    area = context.area
-    ui = area.regions[3]
+class GizmoData:
 
-    scene = context.scene
-    ob = space.camera
-    cam = ob.data
+    def __init__(self, context, offset_x=0, offset_y=0, anchor="bottom_left"):
+        self.context = context
+        self.offset_x = offset_x
+        self.offset_y = offset_y
+        self.anchor = anchor
+        self.space = context.space_data
+        self.area = context.area
+        self.ui = self.area.regions[3]
+        self.scene = context.scene
+        self.ob = self.space.camera
+        self.cam = self.ob.data
+        self.size = context.preferences.addons["camera_hud"].preferences.size
+        self.display_scale = context.preferences.addons["camera_hud"].preferences.display_scale
+        self.gizmo_size = context.preferences.view.gizmo_size
+        self.res_x, self.res_y = (
+            self.scene.render.resolution_x, self.scene.render.resolution_y)
+        self.loc_vec = self.matrix_base()        
 
-    preferences = context.preferences
+    def matrix_base(self):
+        """ Get the gizmo matrix so it sits next to the camera frame """
 
-    z = cam.clip_start + .01
+        z = self.cam.clip_start + .01
+        # we can have 'wrong' sensor fitting for the display aspect
+        aspect = self.res_x / self.res_y
+        shift_flip = self.cam.sensor_fit != ('VERTICAL' if aspect > 1 else 'HORIZONTAL')
+        landscape = (aspect > 1) if shift_flip else (aspect < 1)
 
-    gizmo_size = preferences.view.gizmo_size
-    size = preferences.addons["camera_hud"].preferences.size
-    display_scale = preferences.addons["camera_hud"].preferences.display_scale
+        angle = self.cam.angle / 2
+        base = math.tan(angle) * z
+        
+        x = base if landscape else base * aspect
+        y = base / aspect if landscape else base
+        largest = max(x, y) if shift_flip else min(x, y)
 
-    res_x, res_y = (scene.render.resolution_x, scene.render.resolution_y)
-
-    # we can have 'wrong' sensor fitting for the display aspect
-    shift_flip = cam.sensor_fit != ('VERTICAL' if res_x > res_y else 'HORIZONTAL')
-    landscape = (res_x > res_y) if shift_flip else (res_x < res_y)
-
-    angle = cam.angle / 2
-    base = math.tan(angle) * z
+        # first we're getting camera space coords of the anchor
+        loc = Vector((
+            x + largest * 2 * self.cam.shift_x,
+            -y + largest * 2 * self.cam.shift_y,
+            -z
+            ))
+        # in world space:
+        loc_cam = self.ob.matrix_world @ Matrix.Translation(loc)
+        # just the translation part
+        loc_vec= loc_cam.to_translation()
+        return loc_vec    
     
-    x = base if landscape else base * res_x / res_y
-    y = base * res_y / res_x if landscape else base
-    largest = max(x, y) if shift_flip else min(x, y)
+    def matrix_2d(self):
+        """ Get the gizmo matrix so it sits next to the camera frame """
+        loc2d = bpy_extras.view3d_utils.location_3d_to_region_2d(
+            self.context.region,
+            self.space.region_3d,
+            self.loc_vec)
 
-    # first we're getting camera space coords of the anchor
-    loc = Vector((
-        x + largest * 2 * cam.shift_x,
-        -y + largest * 2 * cam.shift_y,
-        -z
-        ))
-    # in world space:
-    loc_cam = ob.matrix_world @ Matrix.Translation(loc)
-    # just the translation part
-    loc_vec= loc_cam.to_translation()
-    
-    
+        maxwidth = self.area.width - self.ui.width
+        loc2d[1] = max(loc2d[1], self.display_scale * self.gizmo_size * self.size * 2)
+        loc2d[0] = min(loc2d[0], maxwidth - self.display_scale * self.gizmo_size * self.size * 2 )
+        loc2d = loc2d + self.display_scale * self.gizmo_size * self.size * Vector((self.offset_x, self.offset_y))
+        # and subtract gizmo width
+        return loc2d + Vector((self.display_scale * self.gizmo_size * self.size, 0))
 
-    # now we get that in screen pixels
-    loc2d = bpy_extras.view3d_utils.location_3d_to_region_2d(
-        context.region,
-        context.space_data.region_3d,
-        loc_vec)
+    def matrix_3d(self):
+        """ Get the gizmo matrix so it sits next to the camera frame """ 
+        
+        # lets calculate the 3D vector again
+        loc_shift = bpy_extras.view3d_utils.region_2d_to_location_3d(
+            self.context.region,
+            self.space.region_3d,
+            self.matrix_2d(),
+            self.loc_vec
+            )
+        # shift it in and out of camera space to get the orientation right
+        loc_out = self.ob.matrix_world.inverted() @ Matrix.Translation(loc_shift)
+        loc_cam = self.ob.matrix_world @ Matrix.Translation(loc_out.to_translation())
+        return loc_cam.normalized()
 
-    maxwidth = context.area.width - ui.width
-    loc2d[1] = max(loc2d[1], 0)
-    loc2d[0] = min(loc2d[0], maxwidth)
-    loc2d = loc2d + display_scale * gizmo_size * size * Vector((offset_x, offset_y))
-
-    # and subtract gizmo width
-    origin2d = loc2d - Vector((display_scale * gizmo_size * size, 0))
-    # lets calculate the 3D vector again
-    loc_shift = bpy_extras.view3d_utils.region_2d_to_location_3d(
-        context.region,
-        context.space_data.region_3d,
-        origin2d,
-        loc_vec
-        )
-    # shift it in and out of camera space to get the orientation right
-    loc_out = ob.matrix_world.inverted() @ Matrix.Translation(loc_shift)
-    loc_cam = ob.matrix_world @ Matrix.Translation(loc_out.to_translation())
-    return loc_cam.normalized()
-
-
-def gizmo_color(context):
-    """ Color the gizmo based on lock_camera """
-    return context.preferences.themes['Default'].user_interface.gizmo_primary
+    def color(self):
+        """ Color the gizmo based on lock_camera """
+        return self.context.preferences.themes['Default'].user_interface.gizmo_primary
 
 
 class ToggleView(bpy.types.Operator):
@@ -331,7 +338,7 @@ class ViewLockGroup(bpy.types.GizmoGroup):
     bl_label = "Lock Camera View"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'WINDOW'
-    bl_options = {'3D', 'PERSISTENT', 'SELECT'}
+    bl_options = {'PERSISTENT', 'SCALE'}
 
     @classmethod
     def poll(cls, context):
@@ -340,30 +347,33 @@ class ViewLockGroup(bpy.types.GizmoGroup):
             )
 
     def setup(self, context):
-        gz = self.gizmos.new(ViewLockWidget.bl_idname)
-        gz.target_set_operator(ToggleView.bl_idname) 
 
-        gz.matrix_basis =  gizmo_matrix(context)
-        gz.color = gizmo_color(context)
-        gz.alpha = 0.5
-
-        gz.color_highlight = gz.color
-        gz.alpha_highlight = 1.0
-        gz.locked = context.space_data.lock_camera
-        self.view_lock_gizmo = gz
+        gz1 = self.gizmos.new("GIZMO_GT_button_2d") 
+        gz1.icon = 'LOCKVIEW_OFF'
+        gz2 = self.gizmos.new("GIZMO_GT_button_2d")
+        gz2.icon = 'LOCKVIEW_ON'
+        
+        for gz in (gz1, gz2):
+            gz.draw_options = {'BACKDROP', 'OUTLINE'}
+            gz.alpha = 0.0
+            gz.color_highlight = 0.8, 0.8, 0.8
+            gz.alpha_highlight = 0.2
+            props = gz.target_set_operator(ToggleView.bl_idname)
+            gz.scale_basis = (80 * 0.35) / 2 # Same as buttons defined in C
+        self.view_lock_gizmo = gz1
+        self.view_unlock_gizmo= gz2
+        self.draw_prepare(context)
 
     def refresh(self, context):
-        space = context.space_data
-        gz = self.view_lock_gizmo
-        gz.color = gizmo_color(context)
-        gz.color_highlight = gz.color
-        gz.locked = context.space_data.lock_camera
-        gz.matrix_basis =  gizmo_matrix(context)
+        self.draw_prepare(context)
         
     def draw_prepare(self, context):
-        gz = self.view_lock_gizmo
-        gz.locked = context.space_data.lock_camera
-        gz.matrix_basis = gizmo_matrix(context)
+        for gz in (self.view_lock_gizmo, self.view_unlock_gizmo):
+            gz_vector = GizmoData(context).matrix_2d()
+            gz.matrix_basis[0][3] = gz_vector[0]
+            gz.matrix_basis[1][3] = gz_vector[1]            
+        self.view_lock_gizmo.hide = context.space_data.lock_camera
+        self.view_unlock_gizmo.hide = not self.view_lock_gizmo.hide
 
 
 class FrameCameraGroup(bpy.types.GizmoGroup):
@@ -371,7 +381,7 @@ class FrameCameraGroup(bpy.types.GizmoGroup):
     bl_label = "Frame Camera Bounds"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'WINDOW'
-    bl_options = {'3D', 'PERSISTENT', 'SELECT'}
+    bl_options = {'PERSISTENT', 'SCALE'}
 
     @classmethod
     def poll(cls, context):
@@ -381,28 +391,25 @@ class FrameCameraGroup(bpy.types.GizmoGroup):
 
     def setup(self, context):
 
-        gz = self.gizmos.new(HomeWidget.bl_idname)
+        gz = self.gizmos.new("GIZMO_GT_button_2d")
+        gz.icon = "MOD_OPACITY"
+        gz.draw_options = {'BACKDROP', 'OUTLINE'}
+        gz.alpha = 0.0
+        gz.color_highlight = 0.8, 0.8, 0.8
+        gz.alpha_highlight = 0.2
+        gz.scale_basis = (80 * 0.35) / 2 # Same as buttons defined in C
         gz.target_set_operator("view3d.view_center_camera")
-
-        gz.matrix_basis =  gizmo_matrix(context, offset_y=1)
-        gz.color = gizmo_color(context)
-        gz.alpha = 0.5
-
-        gz.color_highlight = gz.color
-        gz.alpha_highlight = 1.0
-
         self.frame_camera_gizmo = gz
+        self.draw_prepare(context)
 
     def refresh(self, context):
-        space = context.space_data
-        gz = self.frame_camera_gizmo
-        gz.color = gizmo_color(context)
-        gz.color_highlight = gz.color
-        gz.matrix_basis =  gizmo_matrix(context, offset_y=1)
+        self.draw_prepare(context)
         
     def draw_prepare(self, context):
         gz = self.frame_camera_gizmo
-        gz.matrix_basis = gizmo_matrix(context, offset_y=1)
+        gz_vector = GizmoData(context, offset_y=1).matrix_2d()
+        gz.matrix_basis[0][3] = gz_vector[0]
+        gz.matrix_basis[1][3] = gz_vector[1]  
 
 
 def gizmo_register():
